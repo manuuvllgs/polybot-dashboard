@@ -56,21 +56,21 @@
 </head><body>
 
 <h1>Polybot Dashboard</h1>
-<p class="sub">Actualizado 2026-05-17 22:00 · auto-refresh cada 5 min</p>
+<p class="sub">Actualizado 2026-05-17 22:05 · auto-refresh cada 5 min</p>
 
 <div class="grid">
   <div class="card"><div class="card-label">Saldo real</div>
     <div class="card-value blue">$26.40</div></div>
   <div class="card"><div class="card-label">P&amp;L paper</div>
-    <div class="card-value green">+0.000</div></div>
+    <div class="card-value green">+1.010</div></div>
   <div class="card"><div class="card-label">P&amp;L real</div>
     <div class="card-value green">$+0.00</div></div>
   <div class="card"><div class="card-label">Predicciones</div>
     <div class="card-value purple">748</div></div>
   <div class="card"><div class="card-label">Ops paper</div>
-    <div class="card-value">0<span class="muted" style="font-size:13px"> / 5🕓</span></div></div>
+    <div class="card-value">5<span class="muted" style="font-size:13px"> / 0🕓</span></div></div>
   <div class="card"><div class="card-label">Win rate paper</div>
-    <div class="card-value muted">0%</div></div>
+    <div class="card-value green">60%</div></div>
   <div class="card"><div class="card-label">Ops reales</div>
     <div class="card-value">0<span class="muted" style="font-size:13px"> / 0🕓</span></div></div>
   <div class="card"><div class="card-label">Invertido real</div>
@@ -84,7 +84,7 @@
 
 <div class="section">
   <div class="section-title">P&amp;L paper acumulado</div>
-  <p class="empty">Sin operaciones cerradas todavía.</p>
+  <canvas id='pnlChart' height='200'></canvas>
 </div>
 
 <div class="section">
@@ -98,40 +98,40 @@
           <td>Tampa Bay Rays vs. Toronto Blue Jays</td>
           <td>YES</td>
           <td class="num">68.5%</td>
-          <td class="muted">⏳ PENDIENTE</td>
-          <td class="num muted">—</td>
+          <td class="red">❌ NO</td>
+          <td class="num red">-0.685</td>
         </tr>
         <tr>
           <td>2026-05-14 02:28</td>
           <td>Colorado Rockies vs. Pittsburgh Pirates</td>
           <td>YES</td>
           <td class="num">78.5%</td>
-          <td class="muted">⏳ PENDIENTE</td>
-          <td class="num muted">—</td>
+          <td class="green">✅ YES</td>
+          <td class="num green">+0.215</td>
         </tr>
         <tr>
           <td>2026-05-14 02:28</td>
           <td>Philadelphia Phillies vs. Boston Red Sox</td>
           <td>NO</td>
           <td class="num">87.5%</td>
-          <td class="muted">⏳ PENDIENTE</td>
-          <td class="num muted">—</td>
+          <td class="green">✅ NO</td>
+          <td class="num green">+0.875</td>
         </tr>
         <tr>
           <td>2026-05-14 01:13</td>
           <td>Washington Nationals vs. Cincinnati Reds</td>
           <td>NO</td>
           <td class="num">85.0%</td>
-          <td class="muted">⏳ PENDIENTE</td>
-          <td class="num muted">—</td>
+          <td class="red">❌ YES</td>
+          <td class="num red">-0.150</td>
         </tr>
         <tr>
           <td>2026-05-14 00:28</td>
           <td>Internazionali BNL d'Italia: Rafael Jodar vs Luciano Da</td>
           <td>NO</td>
           <td class="num">75.5%</td>
-          <td class="muted">⏳ PENDIENTE</td>
-          <td class="num muted">—</td>
+          <td class="green">✅ NO</td>
+          <td class="num green">+0.755</td>
         </tr></tbody>
     </table>
     
@@ -144,6 +144,6 @@
 
 <p class="footer">polybot · self-hosted</p>
 
-
+<script>const ctx=document.getElementById('pnlChart').getContext('2d');new Chart(ctx,{type:'line',data:{labels:["#1", "#2", "#3", "#4", "#5"],datasets:[{label:'P&L',data:[0.755, 0.605, 1.48, 1.695, 1.01],borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,0.08)',borderWidth:2,pointRadius:2,fill:true,tension:0.3}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{grid:{color:'#2a2d3e'},ticks:{color:'#94a3b8'}},x:{grid:{color:'#2a2d3e'},ticks:{color:'#94a3b8',maxTicksLimit:10}}}}});</script>
 
 </body></html>
