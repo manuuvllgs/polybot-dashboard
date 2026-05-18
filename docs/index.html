@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="refresh" content="300">
-<title>Polybot — Estado</title>
+<title>Polybot — Real</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <style>
   :root {
@@ -14,7 +14,7 @@
   body {
     background:var(--bg); color:var(--text);
     font:14px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-    padding:16px; max-width:1000px; margin:0 auto;
+    padding:16px; max-width:1100px; margin:0 auto;
   }
   h1 { font-size:22px; font-weight:600; margin-bottom:4px; }
   .sub { color:var(--muted); font-size:13px; margin-bottom:20px; }
@@ -29,6 +29,7 @@
     text-transform:uppercase; letter-spacing:0.05em;
   }
   .card-value { font-size:22px; font-weight:600; font-variant-numeric:tabular-nums; }
+  .card-sub { font-size:11px; color:var(--muted); margin-top:4px; }
   .green { color:var(--green); } .red { color:var(--red); }
   .blue { color:var(--blue); } .purple { color:var(--purple); }
   .muted { color:var(--muted); }
@@ -36,7 +37,8 @@
     background:var(--card); border:1px solid var(--border);
     border-radius:12px; padding:16px; margin-bottom:16px;
   }
-  .section-title { font-size:14px; font-weight:500; margin-bottom:12px; }
+  .section-title { font-size:14px; font-weight:500; margin-bottom:12px; display:flex; justify-content:space-between; align-items:center; }
+  .section-title .count { color:var(--muted); font-size:12px; font-weight:400; }
   .procs { display:flex; flex-wrap:wrap; gap:8px; }
   .proc {
     padding:6px 10px; border-radius:8px; font-size:12px;
@@ -55,95 +57,123 @@
 </style>
 </head><body>
 
-<h1>Polybot Dashboard</h1>
-<p class="sub">Actualizado 2026-05-18 12:17 · auto-refresh cada 5 min</p>
+<h1>Polybot — Trading real</h1>
+<p class="sub">Actualizado 2026-05-18 12:22 · auto-refresh cada 5 min</p>
 
 <div class="grid">
-  <div class="card"><div class="card-label">Saldo real</div>
-    <div class="card-value blue">$108.64</div></div>
-  <div class="card"><div class="card-label">P&amp;L paper</div>
-    <div class="card-value green">+1.010</div></div>
-  <div class="card"><div class="card-label">P&amp;L real</div>
-    <div class="card-value green">$+0.00</div></div>
-  <div class="card"><div class="card-label">Predicciones</div>
-    <div class="card-value purple">872</div></div>
-  <div class="card"><div class="card-label">Ops paper</div>
-    <div class="card-value">5<span class="muted" style="font-size:13px"> / 0🕓</span></div></div>
-  <div class="card"><div class="card-label">Win rate paper</div>
-    <div class="card-value green">60%</div></div>
-  <div class="card"><div class="card-label">Ops reales</div>
-    <div class="card-value">0<span class="muted" style="font-size:13px"> / 0🕓</span></div></div>
-  <div class="card"><div class="card-label">Invertido real</div>
-    <div class="card-value blue">$0.00</div></div>
+  <div class="card">
+    <div class="card-label">Saldo Polymarket</div>
+    <div class="card-value blue">$108.64</div>
+    <div class="card-sub">cash disponible</div>
+  </div>
+  <div class="card">
+    <div class="card-label">P&amp;L total</div>
+    <div class="card-value green">$+0.00</div>
+    <div class="card-sub">0 ops cerradas</div>
+  </div>
+  <div class="card">
+    <div class="card-label">P&amp;L hoy</div>
+    <div class="card-value green">$+0.00</div>
+    <div class="card-sub">desde 00:00</div>
+  </div>
+  <div class="card">
+    <div class="card-label">P&amp;L 7 días</div>
+    <div class="card-value green">$+0.00</div>
+    <div class="card-sub">última semana</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Operaciones</div>
+    <div class="card-value">0</div>
+    <div class="card-sub">0 abiertas · 0 cerradas</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Win rate</div>
+    <div class="card-value muted">0%</div>
+    <div class="card-sub">0 ops</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Invertido ahora</div>
+    <div class="card-value blue">$0.00</div>
+    <div class="card-sub">en posiciones abiertas</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Ganancia media/op</div>
+    <div class="card-value green">$+0.00</div>
+    <div class="card-sub">cuando cierra</div>
+  </div>
 </div>
 
 <div class="section">
-  <div class="section-title">Procesos</div>
-  <div class="procs"><div class="proc on">✓ Paper trader</div><div class="proc on">✓ Noticias</div><div class="proc on">✓ Recolector</div><div class="proc on">✓ Telegram bot</div><div class="proc on">✓ Trader real</div><div class="proc on">✓ Publicador</div></div>
+  <div class="section-title">P&amp;L acumulado (USD)<span class="count">0 ops cerradas</span></div>
+  <p class="empty">Aún sin operaciones cerradas.</p>
 </div>
 
 <div class="section">
-  <div class="section-title">P&amp;L paper acumulado</div>
-  <canvas id='pnlChart' height='200'></canvas>
+  <div class="section-title">Posiciones abiertas<span class="count">0 · $0.00</span></div>
+  <p class="empty">No hay operaciones abiertas.</p>
 </div>
 
 <div class="section">
-  <div class="section-title">Últimas operaciones paper</div>
+  <div class="section-title">Historial reciente<span class="count">últimas 20</span></div>
+  <p class="empty">Aún no hay operaciones cerradas.</p>
+</div>
+
+<div class="section">
+  <div class="section-title">Oportunidades activas (recolector)<span class="count">5 mercados con edge ≥ umbral</span></div>
   
     <table>
-      <thead><tr><th>Fecha</th><th>Mercado</th><th>Dir</th><th>Precio</th><th>Resultado</th><th>P&L</th></tr></thead>
+      <thead><tr><th>Detectada</th><th>Mercado</th><th>Dir</th><th>Precio</th><th>Edge</th><th>Cierra</th></tr></thead>
       <tbody>
         <tr>
-          <td>2026-05-14 02:48</td>
-          <td>Tampa Bay Rays vs. Toronto Blue Jays</td>
+          <td class="muted">2026-05-17 10:07</td>
+          <td>Will "Iceman" - Drake debut week album sales be between 500k</td>
           <td>YES</td>
-          <td class="num">68.5%</td>
-          <td class="red">❌ NO</td>
-          <td class="num red">-0.685</td>
+          <td class="num">44.2%</td>
+          <td class="num blue">+8.1%</td>
+          <td class="muted">2026-08-31</td>
         </tr>
         <tr>
-          <td>2026-05-14 02:28</td>
-          <td>Colorado Rockies vs. Pittsburgh Pirates</td>
+          <td class="muted">2026-05-16 12:09</td>
+          <td>Will SpaceX IPO by June 15, 2026?</td>
           <td>YES</td>
-          <td class="num">78.5%</td>
-          <td class="green">✅ YES</td>
-          <td class="num green">+0.215</td>
+          <td class="num">75.2%</td>
+          <td class="num blue">+9.5%</td>
+          <td class="muted">2026-06-15</td>
         </tr>
         <tr>
-          <td>2026-05-14 02:28</td>
-          <td>Philadelphia Phillies vs. Boston Red Sox</td>
-          <td>NO</td>
-          <td class="num">87.5%</td>
-          <td class="green">✅ NO</td>
-          <td class="num green">+0.875</td>
+          <td class="muted">2026-05-15 01:01</td>
+          <td>Gemini 3.5 released by May 31?</td>
+          <td>YES</td>
+          <td class="num">67.0%</td>
+          <td class="num blue">+17.6%</td>
+          <td class="muted">2026-06-30</td>
         </tr>
         <tr>
-          <td>2026-05-14 01:13</td>
-          <td>Washington Nationals vs. Cincinnati Reds</td>
-          <td>NO</td>
-          <td class="num">85.0%</td>
-          <td class="red">❌ YES</td>
-          <td class="num red">-0.150</td>
+          <td class="muted">2026-05-15 01:01</td>
+          <td>Gemini 3.5 released by June 30?</td>
+          <td>YES</td>
+          <td class="num">72.5%</td>
+          <td class="num blue">+14.5%</td>
+          <td class="muted">2026-06-30</td>
         </tr>
         <tr>
-          <td>2026-05-14 00:28</td>
-          <td>Internazionali BNL d'Italia: Rafael Jodar vs Luciano Da</td>
-          <td>NO</td>
-          <td class="num">75.5%</td>
-          <td class="green">✅ NO</td>
-          <td class="num green">+0.755</td>
+          <td class="muted">2026-05-15 01:01</td>
+          <td>Andy Burnham out as Mayor of Greater Manchester by May 31?</td>
+          <td>YES</td>
+          <td class="num">62.5%</td>
+          <td class="num blue">+8.9%</td>
+          <td class="muted">2026-05-31</td>
         </tr></tbody>
     </table>
     
 </div>
 
 <div class="section">
-  <div class="section-title">Últimas operaciones reales</div>
-  <p class="empty">Sin operaciones todavía.</p>
+  <div class="section-title">Procesos</div>
+  <div class="procs"><div class="proc on">✓ Trader real</div><div class="proc on">✓ Recolector</div><div class="proc on">✓ Telegram bot</div><div class="proc on">✓ Publicador</div><div class="proc on">✓ Paper trader</div><div class="proc on">✓ Noticias</div></div>
 </div>
 
 <p class="footer">polybot · self-hosted</p>
 
-<script>const ctx=document.getElementById('pnlChart').getContext('2d');new Chart(ctx,{type:'line',data:{labels:["#1", "#2", "#3", "#4", "#5"],datasets:[{label:'P&L',data:[0.755, 0.605, 1.48, 1.695, 1.01],borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,0.08)',borderWidth:2,pointRadius:2,fill:true,tension:0.3}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{grid:{color:'#2a2d3e'},ticks:{color:'#94a3b8'}},x:{grid:{color:'#2a2d3e'},ticks:{color:'#94a3b8',maxTicksLimit:10}}}}});</script>
 
 </body></html>
