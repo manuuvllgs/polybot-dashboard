@@ -1,126 +1,190 @@
 <!DOCTYPE html>
-<html lang="es"><head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="refresh" content="300">
-<title>Polybot — Real</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
-<style>
-  :root {
-    --bg:#0f1117; --card:#1a1d2e; --border:#2a2d3e; --text:#e2e8f0;
-    --muted:#94a3b8; --green:#2ecc71; --red:#e74c3c; --blue:#3b82f6; --purple:#8b5cf6;
-  }
-  * { box-sizing:border-box; margin:0; padding:0; }
-  body {
-    background:var(--bg); color:var(--text);
-    font:14px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-    padding:16px; max-width:1100px; margin:0 auto;
-  }
-  h1 { font-size:22px; font-weight:600; margin-bottom:4px; }
-  .sub { color:var(--muted); font-size:13px; margin-bottom:20px; }
-  .grid { display:grid; gap:12px; margin-bottom:20px; grid-template-columns: repeat(2, 1fr); }
-  @media (min-width:600px) { .grid { grid-template-columns: repeat(4, 1fr); } }
-  .card {
-    background:var(--card); border:1px solid var(--border);
-    border-radius:12px; padding:14px;
-  }
-  .card-label {
-    font-size:11px; color:var(--muted); margin-bottom:6px;
-    text-transform:uppercase; letter-spacing:0.05em;
-  }
-  .card-value { font-size:22px; font-weight:600; font-variant-numeric:tabular-nums; }
-  .card-sub { font-size:11px; color:var(--muted); margin-top:4px; }
-  .green { color:var(--green); } .red { color:var(--red); }
-  .blue { color:var(--blue); } .purple { color:var(--purple); }
-  .muted { color:var(--muted); }
-  .section {
-    background:var(--card); border:1px solid var(--border);
-    border-radius:12px; padding:16px; margin-bottom:16px;
-  }
-  .section-title { font-size:14px; font-weight:500; margin-bottom:12px; display:flex; justify-content:space-between; align-items:center; }
-  .section-title .count { color:var(--muted); font-size:12px; font-weight:400; }
-  .procs { display:flex; flex-wrap:wrap; gap:8px; }
-  .proc {
-    padding:6px 10px; border-radius:8px; font-size:12px;
-    background:rgba(46,204,113,0.1); color:var(--green);
-  }
-  .proc.off { background:rgba(231,76,60,0.1); color:var(--red); }
-  table { width:100%; border-collapse:collapse; font-size:12px; }
-  th {
-    text-align:left; padding:8px 6px; color:var(--muted); font-weight:400;
-    border-bottom:1px solid var(--border); font-size:11px; text-transform:uppercase;
-  }
-  td { padding:8px 6px; border-bottom:1px solid var(--border); }
-  td.num { font-variant-numeric:tabular-nums; text-align:right; }
-  .empty { color:var(--muted); text-align:center; padding:24px; font-size:13px; }
-  .footer { color:var(--muted); font-size:11px; text-align:center; margin-top:24px; padding-bottom:12px; }
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="300">
+  <title>Polybot — Real</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg: #000000; --bg-secondary: #0a0a0a; --card: #0f0f0f;
+      --card-hover: #1a1a1a; --border: #2a2a2a; --border-light: #3a3a3a;
+      --text: #ffffff; --text-secondary: #999999;
+      --accent-primary: #ff1493; --accent-success: #ff1493;
+      --accent-warning: #ff1493; --accent-danger: #ff1493; --accent-info: #ff1493;
+      --glow-blue: rgba(255, 20, 147, 0.1); --glow-green: rgba(255, 20, 147, 0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6;
+      padding: 20px; max-width: 1200px; margin: 0 auto; min-height: 100vh;
+      position: relative; overflow-x: hidden;
+    }
+    body > * { position: relative; z-index: 2; }
+    h1 {
+      font-family: 'JetBrains Mono', monospace; font-size: 48px; font-weight: 700;
+      margin: 0; letter-spacing: -2px; color: var(--text);
+      animation: fadeInDown 0.6s ease-out;
+    }
+    .header { margin-bottom: 24px; position: relative; }
+    .handle {
+      font-size: 14px; color: var(--accent-primary); font-weight: 600;
+      letter-spacing: 0.5px; margin-top: 4px; animation: fadeIn 0.8s ease-out 0.2s backwards;
+    }
+    .sub {
+      color: var(--text-secondary); font-size: 13px; margin-bottom: 28px;
+      animation: fadeIn 0.8s ease-out 0.3s backwards;
+    }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .grid {
+      display: grid; gap: 16px; margin-bottom: 32px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      animation: fadeIn 1s ease-out 0.3s backwards;
+    }
+    @media (max-width: 768px) { .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
+    @media (max-width: 480px) { .grid { grid-template-columns: 1fr; } }
+    .card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 18px; transition: all 0.3s ease; position: relative; overflow: hidden; cursor: pointer;
+    }
+    .card:hover {
+      border-color: var(--accent-primary);
+      box-shadow: 0 8px 24px rgba(255, 20, 147, 0.1); transform: translateY(-2px);
+    }
+    .card-label {
+      font-size: 11px; color: var(--text-secondary); margin-bottom: 10px;
+      text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;
+    }
+    .card-value {
+      font-size: 26px; font-weight: 600; font-variant-numeric: tabular-nums;
+      margin-bottom: 6px; letter-spacing: -0.3px;
+    }
+    .card-sub { font-size: 12px; color: var(--text-secondary); }
+    .green { color: var(--accent-primary); }
+    .red { color: var(--accent-primary); }
+    .blue { color: var(--accent-primary); }
+    .cyan { color: var(--accent-primary); }
+    .muted { color: var(--text-secondary); }
+    .section {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 22px; margin-bottom: 18px; animation: slideUp 0.5s ease-out backwards;
+      transition: all 0.3s ease;
+    }
+    .section:nth-child(2) { animation-delay: 0.2s; }
+    .section:nth-child(3) { animation-delay: 0.3s; }
+    .section:nth-child(4) { animation-delay: 0.4s; }
+    .section:nth-child(5) { animation-delay: 0.5s; }
+    .section:nth-child(6) { animation-delay: 0.6s; }
+    .section:hover {
+      border-color: var(--accent-primary); box-shadow: 0 8px 24px rgba(255, 20, 147, 0.1);
+    }
+    .section-title {
+      font-size: 15px; font-weight: 600; margin-bottom: 16px;
+      display: flex; justify-content: space-between; align-items: center; color: var(--text);
+    }
+    .section-title .count {
+      color: var(--text-secondary); font-size: 12px; font-weight: 500;
+      background: transparent; padding: 0; border-radius: 0; border: none;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th {
+      text-align: left; padding: 12px 8px; color: var(--text-secondary); font-weight: 600;
+      border-bottom: 2px solid var(--border-light); font-size: 11px;
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    td { padding: 14px 8px; border-bottom: 1px solid var(--border); transition: all 0.3s ease; }
+    td.num { font-variant-numeric: tabular-nums; text-align: right; font-weight: 500; }
+    tbody tr { transition: all 0.3s ease; }
+    tbody tr:hover {
+      background: rgba(255, 20, 147, 0.05); border-left: 3px solid var(--accent-primary); padding-left: 5px;
+    }
+    tbody tr:last-child td { border-bottom: none; }
+    .procs { display: flex; flex-wrap: wrap; gap: 10px; }
+    .proc {
+      padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 500;
+      border: 1px solid var(--border); transition: all 0.2s ease;
+      display: inline-flex; align-items: center; gap: 5px;
+    }
+    .proc.on {
+      background: rgba(255, 20, 147, 0.1); color: var(--accent-success);
+      border-color: rgba(255, 20, 147, 0.3);
+    }
+    .proc.off {
+      background: rgba(0, 0, 0, 0.05); color: #999999; border-color: rgba(0, 0, 0, 0.2);
+    }
+    .proc:hover { transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); }
+    .footer {
+      color: var(--text-secondary); font-size: 12px; text-align: center;
+      margin-top: 32px; padding-bottom: 16px; animation: fadeIn 1.2s ease-out backwards;
+    }
+    .empty { color: var(--text-secondary); text-align: center; padding: 32px; font-size: 14px; }
+    #pnlChart { max-height: 220px; }
+    @media (max-width: 768px) {
+      h1 { font-size: 28px; }
+      .section { padding: 16px; }
+      .section-title { flex-direction: column; gap: 8px; align-items: flex-start; }
+      table { font-size: 12px; }
+      td, th { padding: 10px 6px; }
+    }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #000000; }
+    ::-webkit-scrollbar-thumb { background: #333333; border-radius: 4px; transition: background 0.3s ease; }
+    ::-webkit-scrollbar-thumb:hover { background: #ff1493; }
 </style>
-</head><body>
+</head>
+<body>
+  <div class="header">
+    <h1>Polybot</h1>
+    <p class="handle">manuuvllgs</p>
+  </div>
+  <p class="sub">Actualizado 2026-05-21 00:00 · Auto-refresh cada 5 min</p>
+  <div class="grid">
+    <div class="card"><div class="card-label">Saldo</div>
+      <div class="card-value cyan">$67.97</div>
+      <div class="card-sub">Cash disponible</div></div>
+    <div class="card"><div class="card-label">P&L Total</div>
+      <div class="card-value green">$+0.14</div>
+      <div class="card-sub">3 operaciones cerradas</div></div>
+    <div class="card"><div class="card-label">P&L Hoy</div>
+      <div class="card-value green">$+0.00</div>
+      <div class="card-sub">Desde las 00:00</div></div>
+    <div class="card"><div class="card-label">P&L 7 Días</div>
+      <div class="card-value green">$+0.14</div>
+      <div class="card-sub">Última semana</div></div>
+    <div class="card"><div class="card-label">Operaciones</div>
+      <div class="card-value">11</div>
+      <div class="card-sub">8 abiertas · 3 cerradas</div></div>
+    <div class="card"><div class="card-label">Win Rate</div>
+      <div class="card-value green">100%</div>
+      <div class="card-sub">3 operaciones</div></div>
+    <div class="card"><div class="card-label">Invertido</div>
+      <div class="card-value cyan">$40.00</div>
+      <div class="card-sub">En posiciones abiertas</div></div>
+    <div class="card"><div class="card-label">Ganancia Media</div>
+      <div class="card-value green">$+0.05</div>
+      <div class="card-sub">Por operación</div></div>
+    <div class="card"><div class="card-label">ROI Total</div>
+      <div class="card-value green">+0.9%</div>
+      <div class="card-sub">$15.00 invertidos</div></div>
+    <div class="card"><div class="card-label">ROI 7D</div>
+      <div class="card-value green">+0.9%</div>
+      <div class="card-sub">Últimos 7 días</div></div>
+  </div>
 
-<h1>Polybot — Trading real</h1>
-<p class="sub">Actualizado 2026-05-20 23:56 · auto-refresh cada 5 min</p>
+  <div class="section">
+    <div class="section-title">P&L Acumulado (USD)<span class="count">3 ops cerradas</span></div>
+    <canvas id='pnlChart' height='200'></canvas>
+  </div>
 
-<div class="grid">
-  <div class="card">
-    <div class="card-label">Saldo Polymarket</div>
-    <div class="card-value blue">$67.97</div>
-    <div class="card-sub">cash disponible</div>
-  </div>
-  <div class="card">
-    <div class="card-label">P&amp;L total</div>
-    <div class="card-value green">$+0.14</div>
-    <div class="card-sub">3 ops cerradas</div>
-  </div>
-  <div class="card">
-    <div class="card-label">P&amp;L hoy</div>
-    <div class="card-value green">$+0.00</div>
-    <div class="card-sub">desde 00:00</div>
-  </div>
-  <div class="card">
-    <div class="card-label">P&amp;L 7 días</div>
-    <div class="card-value green">$+0.14</div>
-    <div class="card-sub">última semana</div>
-  </div>
-  <div class="card">
-    <div class="card-label">Operaciones</div>
-    <div class="card-value">11</div>
-    <div class="card-sub">8 abiertas · 3 cerradas</div>
-  </div>
-  <div class="card">
-    <div class="card-label">Win rate</div>
-    <div class="card-value green">100%</div>
-    <div class="card-sub">3 ops</div>
-  </div>
-  <div class="card">
-    <div class="card-label">Invertido ahora</div>
-    <div class="card-value blue">$40.00</div>
-    <div class="card-sub">en posiciones abiertas</div>
-  </div>
-  <div class="card">
-    <div class="card-label">Ganancia media/op</div>
-    <div class="card-value green">$+0.05</div>
-    <div class="card-sub">cuando cierra</div>
-  </div>
-  <div class="card">
-    <div class="card-label">ROI total</div>
-    <div class="card-value green">+0.9%</div>
-    <div class="card-sub">sobre $15.00 invertidos</div>
-  </div>
-  <div class="card">
-    <div class="card-label">ROI 7 días</div>
-    <div class="card-value green">+0.9%</div>
-    <div class="card-sub">últimos 7 días</div>
-  </div>
-</div>
-
-<div class="section">
-  <div class="section-title">P&amp;L acumulado (USD)<span class="count">3 ops cerradas</span></div>
-  <canvas id='pnlChart' height='200'></canvas>
-</div>
-
-<div class="section">
-  <div class="section-title">Posiciones abiertas<span class="count">8 · $40.00</span></div>
-  
+  <div class="section">
+    <div class="section-title">Posiciones Abiertas<span class="count">8 · $40.00</span></div>
+    
     <table>
       <thead><tr><th>Abierta</th><th>Mercado</th><th>Dir</th><th>Precio</th><th>Size</th><th>Edge</th><th>Cierra</th></tr></thead>
       <tbody>
@@ -197,12 +261,11 @@
           <td class="muted">2026-05-22</td>
         </tr></tbody>
     </table>
-    
-</div>
+  </div>
 
-<div class="section">
-  <div class="section-title">Historial reciente<span class="count">últimas 20</span></div>
-  
+  <div class="section">
+    <div class="section-title">Historial Reciente<span class="count">Últimas 20</span></div>
+    
     <table>
       <thead><tr><th>Fecha</th><th>Mercado</th><th>Dir</th><th>Size</th><th>Cierre</th><th>P&L</th></tr></thead>
       <tbody>
@@ -231,12 +294,11 @@
           <td class="num green">+0.03 $</td>
         </tr></tbody>
     </table>
-    
-</div>
+  </div>
 
-<div class="section">
-  <div class="section-title">Oportunidades activas (recolector)<span class="count">4 mercados con edge ≥ umbral</span></div>
-  
+  <div class="section">
+    <div class="section-title">Oportunidades Activas (Recolector)<span class="count">4 mercados con edge ≥ umbral</span></div>
+    
     <table>
       <thead><tr><th>Detectada</th><th>Mercado</th><th>Dir</th><th>Precio</th><th>Edge</th><th>Cierra</th></tr></thead>
       <tbody>
@@ -246,7 +308,7 @@
           <td>YES</td>
           <td class="num">70.5%</td>
           <td class="num blue">+11.7%</td>
-          <td class="muted"></td>
+          <td class="muted">—</td>
         </tr>
         <tr>
           <td class="muted">2026-05-17 10:07</td>
@@ -273,15 +335,40 @@
           <td class="muted">2026-05-31</td>
         </tr></tbody>
     </table>
-    
-</div>
+  </div>
 
-<div class="section">
-  <div class="section-title">Procesos</div>
-  <div class="procs"><div class="proc on">✓ Trader real</div><div class="proc on">✓ Recolector</div><div class="proc on">✓ Evaluador</div><div class="proc on">✓ Monitor TP/SL</div><div class="proc on">✓ Telegram bot</div><div class="proc on">✓ Publicador</div><div class="proc on">✓ Paper trader</div><div class="proc on">✓ Noticias</div></div>
-</div>
+  <div class="section">
+    <div class="section-title">Procesos</div>
+    <div class="procs"><div class="proc on">✓ Trader Real</div><div class="proc on">✓ Recolector</div><div class="proc on">✓ Evaluador</div><div class="proc on">✓ Monitor TP/SL</div><div class="proc on">✓ Telegram Bot</div><div class="proc on">✓ Publicador</div><div class="proc on">✓ Paper Trader</div><div class="proc on">✓ Noticias</div></div>
+  </div>
 
-<p class="footer">polybot · self-hosted</p>
-<script>const ctx=document.getElementById('pnlChart').getContext('2d');new Chart(ctx,{type:'line',data:{labels:["#1", "#2", "#3"],datasets:[{label:'P&L $',data:[0.0275, 0.108, 0.135],borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,0.08)',borderWidth:2,pointRadius:2,fill:true,tension:0.3}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{grid:{color:'#2a2d3e'},ticks:{color:'#94a3b8',callback:function(v){return '$'+v.toFixed(2);}}},x:{grid:{color:'#2a2d3e'},ticks:{color:'#94a3b8',maxTicksLimit:10}}}}});</script>
+  <p class="footer">polybot · self-hosted</p>
 
-</body></html>
+  <script>
+    const ctx = document.getElementById('pnlChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ["#1", "#2", "#3"],
+        datasets: [{
+          label: 'P&L $', data: [0.0275, 0.108, 0.135],
+          borderColor: '#ff1493', backgroundColor: 'rgba(255, 20, 147, 0.08)',
+          borderWidth: 2, pointRadius: 3, pointBackgroundColor: '#ff1493',
+          pointBorderColor: '#ffffff', pointBorderWidth: 1, fill: true,
+          tension: 0.3, pointHoverRadius: 5,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { beginAtZero: true,
+            grid: { color: 'rgba(255, 255, 255, 0.08)', drawBorder: false },
+            ticks: { color: '#999999', callback: function(v){return '$'+v.toFixed(2);}, font: { size: 11 } } },
+          x: { grid: { display: false }, ticks: { color: '#999999', font: { size: 11 } } }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
