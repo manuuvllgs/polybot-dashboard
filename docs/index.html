@@ -58,7 +58,7 @@
 </head><body>
 
 <h1>Polybot — Trading real</h1>
-<p class="sub">Actualizado 2026-05-20 16:18 · auto-refresh cada 5 min</p>
+<p class="sub">Actualizado 2026-05-20 16:23 · auto-refresh cada 5 min</p>
 
 <div class="grid">
   <div class="card">
@@ -68,8 +68,8 @@
   </div>
   <div class="card">
     <div class="card-label">P&amp;L total</div>
-    <div class="card-value green">$+0.00</div>
-    <div class="card-sub">0 ops cerradas</div>
+    <div class="card-value green">$+0.14</div>
+    <div class="card-sub">3 ops cerradas</div>
   </div>
   <div class="card">
     <div class="card-label">P&amp;L hoy</div>
@@ -78,18 +78,18 @@
   </div>
   <div class="card">
     <div class="card-label">P&amp;L 7 días</div>
-    <div class="card-value green">$+0.00</div>
+    <div class="card-value green">$+0.14</div>
     <div class="card-sub">última semana</div>
   </div>
   <div class="card">
     <div class="card-label">Operaciones</div>
-    <div class="card-value">7</div>
-    <div class="card-sub">7 abiertas · 0 cerradas</div>
+    <div class="card-value">10</div>
+    <div class="card-sub">7 abiertas · 3 cerradas</div>
   </div>
   <div class="card">
     <div class="card-label">Win rate</div>
-    <div class="card-value muted">0%</div>
-    <div class="card-sub">0 ops</div>
+    <div class="card-value green">100%</div>
+    <div class="card-sub">3 ops</div>
   </div>
   <div class="card">
     <div class="card-label">Invertido ahora</div>
@@ -98,24 +98,24 @@
   </div>
   <div class="card">
     <div class="card-label">Ganancia media/op</div>
-    <div class="card-value green">$+0.00</div>
+    <div class="card-value green">$+0.05</div>
     <div class="card-sub">cuando cierra</div>
   </div>
   <div class="card">
     <div class="card-label">ROI total</div>
-    <div class="card-value green">+0.0%</div>
-    <div class="card-sub">sobre $0.00 invertidos</div>
+    <div class="card-value green">+0.9%</div>
+    <div class="card-sub">sobre $15.00 invertidos</div>
   </div>
   <div class="card">
     <div class="card-label">ROI 7 días</div>
-    <div class="card-value green">+0.0%</div>
+    <div class="card-value green">+0.9%</div>
     <div class="card-sub">últimos 7 días</div>
   </div>
 </div>
 
 <div class="section">
-  <div class="section-title">P&amp;L acumulado (USD)<span class="count">0 ops cerradas</span></div>
-  <p class="empty">Aún sin operaciones cerradas.</p>
+  <div class="section-title">P&amp;L acumulado (USD)<span class="count">3 ops cerradas</span></div>
+  <canvas id='pnlChart' height='200'></canvas>
 </div>
 
 <div class="section">
@@ -193,7 +193,36 @@
 
 <div class="section">
   <div class="section-title">Historial reciente<span class="count">últimas 20</span></div>
-  <p class="empty">Aún no hay operaciones cerradas.</p>
+  
+    <table>
+      <thead><tr><th>Fecha</th><th>Mercado</th><th>Dir</th><th>Size</th><th>Cierre</th><th>P&L</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="muted">2026-05-19 17:36</td>
+          <td>Iran closes its airspace by May 21?</td>
+          <td>NO</td>
+          <td class="num">$5.00</td>
+          <td>💰 TP</td>
+          <td class="num green">+0.03 $</td>
+        </tr>
+        <tr>
+          <td class="muted">2026-05-18 16:11</td>
+          <td>Will Elon Musk post 180-199 tweets from May 15 to May 22, 20</td>
+          <td>NO</td>
+          <td class="num">$5.00</td>
+          <td>💰 TP</td>
+          <td class="num green">+0.08 $</td>
+        </tr>
+        <tr>
+          <td class="muted">2026-05-18 15:41</td>
+          <td>Will a new Gemini flagship be released by May 22, 2026?</td>
+          <td>NO</td>
+          <td class="num">$5.00</td>
+          <td>💰 TP</td>
+          <td class="num green">+0.03 $</td>
+        </tr></tbody>
+    </table>
+    
 </div>
 
 <div class="section">
@@ -268,6 +297,6 @@
 </div>
 
 <p class="footer">polybot · self-hosted</p>
-
+<script>const ctx=document.getElementById('pnlChart').getContext('2d');new Chart(ctx,{type:'line',data:{labels:["#1", "#2", "#3"],datasets:[{label:'P&L $',data:[0.0275, 0.108, 0.135],borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,0.08)',borderWidth:2,pointRadius:2,fill:true,tension:0.3}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{grid:{color:'#2a2d3e'},ticks:{color:'#94a3b8',callback:function(v){return '$'+v.toFixed(2);}}},x:{grid:{color:'#2a2d3e'},ticks:{color:'#94a3b8',maxTicksLimit:10}}}}});</script>
 
 </body></html>
