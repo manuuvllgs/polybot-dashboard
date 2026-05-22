@@ -143,47 +143,47 @@
     <h1>Polybot</h1>
     <p class="handle">manuuvllgs</p>
   </div>
-  <p class="sub">Actualizado 2026-05-22 15:08 · Auto-refresh cada 5 min</p>
+  <p class="sub">Actualizado 2026-05-22 16:45 · Auto-refresh cada 5 min</p>
   <div class="grid">
     <div class="card"><div class="card-label">Saldo</div>
       <div class="card-value cyan">••••</div>
       <div class="card-sub">Cash disponible</div></div>
     <div class="card"><div class="card-label">P&L Total</div>
-      <div class="card-value green">$+0.14</div>
-      <div class="card-sub">3 operaciones cerradas</div></div>
+      <div class="card-value green">$+0.97</div>
+      <div class="card-sub">4 operaciones cerradas</div></div>
     <div class="card"><div class="card-label">P&L Hoy</div>
       <div class="card-value green">$+0.00</div>
       <div class="card-sub">Desde las 00:00</div></div>
     <div class="card"><div class="card-label">P&L 7 Días</div>
-      <div class="card-value green">$+0.14</div>
+      <div class="card-value green">$+0.97</div>
       <div class="card-sub">Última semana</div></div>
     <div class="card"><div class="card-label">Operaciones</div>
       <div class="card-value">17</div>
-      <div class="card-sub">14 abiertas · 3 cerradas</div></div>
+      <div class="card-sub">13 abiertas · 4 cerradas</div></div>
     <div class="card"><div class="card-label">Win Rate</div>
       <div class="card-value green">100%</div>
-      <div class="card-sub">3 operaciones</div></div>
+      <div class="card-sub">4 operaciones</div></div>
     <div class="card"><div class="card-label">Invertido</div>
-      <div class="card-value cyan">$80.00</div>
+      <div class="card-value cyan">$75.00</div>
       <div class="card-sub">En posiciones abiertas</div></div>
     <div class="card"><div class="card-label">Ganancia Media</div>
-      <div class="card-value green">$+0.05</div>
+      <div class="card-value green">$+0.24</div>
       <div class="card-sub">Por operación</div></div>
     <div class="card"><div class="card-label">ROI Total</div>
-      <div class="card-value green">+0.9%</div>
-      <div class="card-sub">$15.00 invertidos</div></div>
+      <div class="card-value green">+4.8%</div>
+      <div class="card-sub">$20.00 invertidos</div></div>
     <div class="card"><div class="card-label">ROI 7D</div>
-      <div class="card-value green">+0.9%</div>
+      <div class="card-value green">+4.8%</div>
       <div class="card-sub">Últimos 7 días</div></div>
   </div>
 
   <div class="section">
-    <div class="section-title">P&L Acumulado (USD)<span class="count">3 ops cerradas</span></div>
+    <div class="section-title">P&L Acumulado (USD)<span class="count">4 ops cerradas</span></div>
     <canvas id='pnlChart' height='200'></canvas>
   </div>
 
   <div class="section">
-    <div class="section-title">Posiciones Abiertas<span class="count">14 · $80.00</span></div>
+    <div class="section-title">Posiciones Abiertas<span class="count">13 · $75.00</span></div>
     
     <table>
       <thead><tr><th>Abierta</th><th>Mercado</th><th>Dir</th><th>Precio</th><th>Size</th><th>Edge</th><th>Cierra</th></tr></thead>
@@ -214,15 +214,6 @@
           <td class="num">$5.00</td>
           <td class="num blue">-2.6%</td>
           <td class="muted">2026-05-26</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-21 15:19</td>
-          <td>Will Bitcoin reach $80,000 May 18-24?</td>
-          <td>NO</td>
-          <td class="num">81.0%</td>
-          <td class="num">$5.00</td>
-          <td class="num blue">-2.8%</td>
-          <td class="muted">2026-05-25</td>
         </tr>
         <tr>
           <td class="muted">2026-05-21 10:06</td>
@@ -324,6 +315,14 @@
       <thead><tr><th>Fecha</th><th>Mercado</th><th>Dir</th><th>Size</th><th>Cierre</th><th>P&L</th></tr></thead>
       <tbody>
         <tr>
+          <td class="muted">2026-05-21 15:19</td>
+          <td>Will Bitcoin reach $80,000 May 18-24?</td>
+          <td>NO</td>
+          <td class="num">$5.00</td>
+          <td>💰 TP</td>
+          <td class="num green">+0.83 $</td>
+        </tr>
+        <tr>
           <td class="muted">2026-05-19 17:36</td>
           <td>Iran closes its airspace by May 21?</td>
           <td>NO</td>
@@ -403,9 +402,9 @@
     new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ["#1", "#2", "#3"],
+        labels: ["#1", "#2", "#3", "#4"],
         datasets: [{
-          label: 'P&L $', data: [0.0275, 0.108, 0.135],
+          label: 'P&L $', data: [0.0275, 0.108, 0.135, 0.9685],
           borderColor: '#ff1493', backgroundColor: 'rgba(255, 20, 147, 0.08)',
           borderWidth: 2, pointRadius: 3, pointBackgroundColor: '#ff1493',
           pointBorderColor: '#ffffff', pointBorderWidth: 1, fill: true,
