@@ -82,6 +82,26 @@
     .balance-button:hover {
       background: rgba(255, 20, 147, 0.18); border-color: var(--accent-primary);
     }
+    .balance-form {
+      display: grid; grid-template-columns: minmax(0, 1fr) auto auto;
+      gap: 8px; margin-top: 12px;
+    }
+    .balance-form[hidden] { display: none; }
+    .balance-input {
+      min-width: 0; background: #050505; color: var(--text);
+      border: 1px solid var(--border-light); border-radius: 6px;
+      padding: 8px 9px; font: inherit; font-size: 12px;
+    }
+    .balance-input:focus {
+      outline: none; border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px rgba(255, 20, 147, 0.12);
+    }
+    .balance-button.secondary {
+      background: transparent; color: var(--text-secondary); border-color: var(--border-light);
+    }
+    .balance-button.secondary:hover {
+      color: var(--text); border-color: var(--accent-primary);
+    }
     .balance-status.error { color: var(--accent-primary); }
     .green { color: var(--accent-primary); }
     .red { color: var(--accent-primary); }
@@ -160,14 +180,19 @@
     <h1>Polybot</h1>
     <p class="handle">manuuvllgs</p>
   </div>
-  <p class="sub">Actualizado 2026-05-22 17:00 · Auto-refresh cada 5 min</p>
+  <p class="sub">Actualizado 2026-05-22 17:05 · Auto-refresh cada 5 min</p>
   <div class="grid">
     <div class="card balance-card"><div class="card-label">Saldo</div>
       <div class="balance-row">
         <div class="card-value cyan" id="saldoValor">••••</div>
         <button class="balance-button" id="verSaldoBtn" type="button">Ver saldo</button>
       </div>
-      <div class="card-sub balance-status" id="saldoEstado">Cash disponible</div></div>
+      <div class="card-sub balance-status" id="saldoEstado">Cash disponible</div>
+      <form class="balance-form" id="saldoForm" hidden>
+        <input class="balance-input" id="saldoPassword" type="password" autocomplete="current-password" placeholder="Contraseña" aria-label="Contraseña para ver saldo">
+        <button class="balance-button" type="submit">Entrar</button>
+        <button class="balance-button secondary" id="saldoCancelBtn" type="button">Cancelar</button>
+      </form></div>
     <div class="card"><div class="card-label">P&L Total</div>
       <div class="card-value green">$+0.97</div>
       <div class="card-sub">4 operaciones cerradas</div></div>
@@ -437,33 +462,59 @@
         .join('');
     }
 
-    document.getElementById('verSaldoBtn').addEventListener('click', async () => {
-      const valueEl = document.getElementById('saldoValor');
-      const statusEl = document.getElementById('saldoEstado');
-      const button = document.getElementById('verSaldoBtn');
+    const valueEl = document.getElementById('saldoValor');
+    const statusEl = document.getElementById('saldoEstado');
+    const button = document.getElementById('verSaldoBtn');
+    const form = document.getElementById('saldoForm');
+    const passwordInput = document.getElementById('saldoPassword');
+    const cancelButton = document.getElementById('saldoCancelBtn');
 
+    function setFormVisible(visible) {
+      form.hidden = !visible;
+      if (visible) passwordInput.focus();
+    }
+
+    button.addEventListener('click', () => {
       if (valueEl.dataset.visible === 'true') {
         valueEl.textContent = '••••';
         valueEl.dataset.visible = 'false';
         button.textContent = 'Ver saldo';
         statusEl.textContent = 'Cash disponible';
         statusEl.classList.remove('error');
+        passwordInput.value = '';
+        setFormVisible(false);
         return;
       }
 
-      const password = window.prompt('Contraseña para ver el saldo');
-      if (password === null) return;
+      statusEl.textContent = 'Introduce la contraseña';
+      statusEl.classList.remove('error');
+      setFormVisible(true);
+    });
+
+    cancelButton.addEventListener('click', () => {
+      passwordInput.value = '';
+      statusEl.textContent = 'Cash disponible';
+      statusEl.classList.remove('error');
+      setFormVisible(false);
+    });
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
 
       try {
-        if (await sha256(password) === SALDO_PASSWORD_HASH) {
+        if (await sha256(passwordInput.value) === SALDO_PASSWORD_HASH) {
           valueEl.textContent = SALDO_REAL;
           valueEl.dataset.visible = 'true';
           button.textContent = 'Ocultar';
           statusEl.textContent = 'Saldo desbloqueado';
           statusEl.classList.remove('error');
+          passwordInput.value = '';
+          setFormVisible(false);
         } else {
           statusEl.textContent = 'Contraseña incorrecta';
           statusEl.classList.add('error');
+          passwordInput.value = '';
+          passwordInput.focus();
         }
       } catch (error) {
         statusEl.textContent = 'No se pudo validar la contraseña';
