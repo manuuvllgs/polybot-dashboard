@@ -238,11 +238,18 @@
 </style>
 </head>
 <body>
+  <button class="menu-btn" id="menuBtn" type="button" aria-label="Abrir menú">&#9776;</button>
+  <div class="menu-overlay" id="menuOverlay" hidden></div>
+  <nav class="menu-panel" id="menuPanel" hidden>
+    <div class="menu-head">Polybot</div>
+    <a href="index.html" class="active">Panel</a>
+    <a href="informes.html">Informes semanales</a>
+  </nav>
   <div class="header">
     <h1>Polybot</h1>
     <p class="handle">manuuvllgs</p>
   </div>
-  <p class="sub">Actualizado 2026-05-23 20:18 · Auto-refresh cada 5 min</p>
+  <p class="sub">Actualizado 2026-05-23 20:19 · Auto-refresh cada 5 min</p>
   <div class="grid">
     <div class="card balance-card"><div class="card-label">Saldo</div>
       <div class="balance-row">
@@ -633,6 +640,20 @@
       }
     });
   </script>
+  <script>
+    (function () {
+      var btn = document.getElementById('menuBtn');
+      var panel = document.getElementById('menuPanel');
+      var overlay = document.getElementById('menuOverlay');
+      if (!btn || !panel || !overlay) return;
+      function mostrar(v) { panel.hidden = !v; overlay.hidden = !v; }
+      btn.addEventListener('click', function () { mostrar(panel.hidden); });
+      overlay.addEventListener('click', function () { mostrar(false); });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') mostrar(false);
+      });
+    })();
+</script>
 
   <script>
     const ctx = document.getElementById('pnlChart').getContext('2d');
