@@ -173,6 +173,68 @@
     ::-webkit-scrollbar-track { background: #000000; }
     ::-webkit-scrollbar-thumb { background: #333333; border-radius: 4px; transition: background 0.3s ease; }
     ::-webkit-scrollbar-thumb:hover { background: #ff1493; }
+    /* --- menú hamburguesa --- */
+    .menu-btn {
+      position: fixed; top: 18px; right: 18px; z-index: 50;
+      width: 44px; height: 44px; padding: 0;
+      background: var(--card); color: var(--accent-primary);
+      border: 1px solid var(--border-light); border-radius: 10px;
+      font-size: 20px; line-height: 1; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s ease;
+    }
+    .menu-btn:hover {
+      border-color: var(--accent-primary);
+      box-shadow: 0 4px 16px rgba(255, 20, 147, 0.2);
+    }
+    .menu-overlay {
+      position: fixed; inset: 0; z-index: 40;
+      background: rgba(0, 0, 0, 0.6);
+    }
+    .menu-overlay[hidden], .menu-panel[hidden] { display: none; }
+    .menu-panel {
+      position: fixed; top: 72px; right: 18px; z-index: 50;
+      min-width: 230px; padding: 8px;
+      background: var(--card); border: 1px solid var(--border-light);
+      border-radius: 12px; box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+      animation: fadeInDown 0.18s ease-out;
+    }
+    .menu-panel .menu-head {
+      font-size: 10px; color: var(--text-secondary); font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em; padding: 8px 12px 4px;
+    }
+    .menu-panel a {
+      display: block; padding: 11px 12px; border-radius: 8px;
+      color: var(--text); text-decoration: none; font-size: 13px;
+      transition: all 0.15s ease;
+    }
+    .menu-panel a:hover { background: rgba(255, 20, 147, 0.1); color: var(--accent-primary); }
+    .menu-panel a.active { color: var(--accent-primary); font-weight: 600; }
+    /* --- informes semanales --- */
+    .back-link {
+      display: inline-block; margin-bottom: 18px; font-size: 13px;
+      color: var(--accent-primary); text-decoration: none;
+    }
+    .back-link:hover { text-decoration: underline; }
+    a.informe-entry {
+      display: block; text-decoration: none; color: inherit;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 18px; margin-bottom: 12px;
+      transition: all 0.25s ease; animation: slideUp 0.4s ease-out backwards;
+    }
+    a.informe-entry:hover {
+      border-color: var(--accent-primary);
+      box-shadow: 0 8px 24px rgba(255, 20, 147, 0.12); transform: translateY(-2px);
+    }
+    .ie-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+    .ie-meta { font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; }
+    .ie-rec { font-size: 13px; margin-top: 8px; color: var(--accent-primary); }
+    .ie-arrow { float: right; color: var(--text-secondary); font-size: 18px; }
+    .informe-pre {
+      white-space: pre-wrap; word-break: break-word;
+      font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.7;
+      color: var(--text); margin: 0;
+    }
 </style>
 </head>
 <body>
@@ -180,7 +242,7 @@
     <h1>Polybot</h1>
     <p class="handle">manuuvllgs</p>
   </div>
-  <p class="sub">Actualizado 2026-05-23 20:14 · Auto-refresh cada 5 min</p>
+  <p class="sub">Actualizado 2026-05-23 20:18 · Auto-refresh cada 5 min</p>
   <div class="grid">
     <div class="card balance-card"><div class="card-label">Saldo</div>
       <div class="balance-row">
