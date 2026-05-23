@@ -238,18 +238,11 @@
 </style>
 </head>
 <body>
-  <button class="menu-btn" id="menuBtn" type="button" aria-label="Abrir menú">&#9776;</button>
-  <div class="menu-overlay" id="menuOverlay" hidden></div>
-  <nav class="menu-panel" id="menuPanel" hidden>
-    <div class="menu-head">Polybot</div>
-    <a href="index.html" class="active">Panel</a>
-    <a href="informes.html">Informes semanales</a>
-  </nav>
   <div class="header">
     <h1>Polybot</h1>
     <p class="handle">manuuvllgs</p>
   </div>
-  <p class="sub">Actualizado 2026-05-23 20:19 · Auto-refresh cada 5 min</p>
+  <p class="sub">Actualizado 2026-05-23 20:23 · Auto-refresh cada 5 min</p>
   <div class="grid">
     <div class="card balance-card"><div class="card-label">Saldo</div>
       <div class="balance-row">
@@ -564,7 +557,7 @@
 
   <div class="section">
     <div class="section-title">Procesos</div>
-    <div class="procs"><div class="proc on">✓ Trader Real</div><div class="proc on">✓ Recolector</div><div class="proc on">✓ Evaluador</div><div class="proc on">✓ Monitor TP/SL</div><div class="proc on">✓ Telegram Bot</div><div class="proc on">✓ Publicador</div><div class="proc on">✓ Paper Trader</div><div class="proc on">✓ Noticias</div></div>
+    <div class="procs"><div class="proc off">✗ Trader Real</div><div class="proc off">✗ Recolector</div><div class="proc off">✗ Evaluador</div><div class="proc off">✗ Monitor TP/SL</div><div class="proc off">✗ Telegram Bot</div><div class="proc off">✗ Publicador</div><div class="proc off">✗ Paper Trader</div><div class="proc off">✗ Noticias</div></div>
   </div>
 
   <p class="footer">polybot · self-hosted</p>
@@ -640,6 +633,13 @@
       }
     });
   </script>
+  <button class="menu-btn" id="menuBtn" type="button" aria-label="Abrir menú">&#9776;</button>
+  <div class="menu-overlay" id="menuOverlay" hidden></div>
+  <nav class="menu-panel" id="menuPanel" hidden>
+    <div class="menu-head">Polybot</div>
+    <a href="index.html" class="active">Panel</a>
+    <a href="informes.html">Informes semanales</a>
+  </nav>
   <script>
     (function () {
       var btn = document.getElementById('menuBtn');
