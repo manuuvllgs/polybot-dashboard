@@ -242,7 +242,7 @@
     <h1>Polybot</h1>
     <p class="handle">manuuvllgs</p>
   </div>
-  <p class="sub">Actualizado 2026-05-26 19:14 · Auto-refresh cada 5 min</p>
+  <p class="sub">Actualizado 2026-05-26 20:30 · Auto-refresh cada 5 min</p>
   <div class="grid">
     <div class="card balance-card"><div class="card-label">Saldo</div>
       <div class="balance-row">
@@ -256,41 +256,41 @@
         <button class="balance-button secondary" id="saldoCancelBtn" type="button">Cancelar</button>
       </form></div>
     <div class="card"><div class="card-label">P&L Total</div>
-      <div class="card-value green">$+0.69</div>
-      <div class="card-sub">20 operaciones cerradas</div></div>
+      <div class="card-value red">$-4.31</div>
+      <div class="card-sub">21 operaciones cerradas</div></div>
     <div class="card"><div class="card-label">P&L Hoy</div>
       <div class="card-value green">$+0.00</div>
       <div class="card-sub">Desde las 00:00</div></div>
     <div class="card"><div class="card-label">P&L 7 Días</div>
-      <div class="card-value red">$-9.56</div>
+      <div class="card-value red">$-14.56</div>
       <div class="card-sub">Última semana</div></div>
     <div class="card"><div class="card-label">Operaciones</div>
       <div class="card-value">27</div>
-      <div class="card-sub">7 abiertas · 20 cerradas</div></div>
+      <div class="card-sub">6 abiertas · 21 cerradas</div></div>
     <div class="card"><div class="card-label">Win Rate</div>
-      <div class="card-value green">60%</div>
-      <div class="card-sub">20 operaciones</div></div>
+      <div class="card-value green">57%</div>
+      <div class="card-sub">21 operaciones</div></div>
     <div class="card"><div class="card-label">Invertido</div>
-      <div class="card-value cyan">$50.00</div>
+      <div class="card-value cyan">$45.00</div>
       <div class="card-sub">En posiciones abiertas</div></div>
     <div class="card"><div class="card-label">Ganancia Media</div>
-      <div class="card-value green">$+0.03</div>
+      <div class="card-value red">$-0.21</div>
       <div class="card-sub">Por operación</div></div>
     <div class="card"><div class="card-label">ROI Total</div>
-      <div class="card-value green">+0.6%</div>
-      <div class="card-sub">$115.00 invertidos</div></div>
+      <div class="card-value red">-3.6%</div>
+      <div class="card-sub">$120.00 invertidos</div></div>
     <div class="card"><div class="card-label">ROI 7D</div>
-      <div class="card-value red">-12.0%</div>
+      <div class="card-value red">-17.1%</div>
       <div class="card-sub">Últimos 7 días</div></div>
   </div>
 
   <div class="section">
-    <div class="section-title">P&L Acumulado (USD)<span class="count">20 ops cerradas</span></div>
+    <div class="section-title">P&L Acumulado (USD)<span class="count">21 ops cerradas</span></div>
     <canvas id='pnlChart' height='200'></canvas>
   </div>
 
   <div class="section">
-    <div class="section-title">Posiciones Abiertas<span class="count">7 · $50.00</span></div>
+    <div class="section-title">Posiciones Abiertas<span class="count">6 · $45.00</span></div>
     
     <table>
       <thead><tr><th>Abierta</th><th>Mercado</th><th>Dir</th><th>Precio</th><th>Size</th><th>Edge</th><th>Cierra</th></tr></thead>
@@ -332,15 +332,6 @@
           <td class="muted">2026-05-27</td>
         </tr>
         <tr>
-          <td class="muted">2026-05-23 05:03</td>
-          <td>Will Elon Musk post 260-279 tweets from May 19 to May 26, 20</td>
-          <td>NO</td>
-          <td class="num">94.0%</td>
-          <td class="num">$5.00</td>
-          <td class="num blue">-2.1%</td>
-          <td class="muted">2026-05-26</td>
-        </tr>
-        <tr>
           <td class="muted">2026-05-22 14:09</td>
           <td>Will Ken Paxton win the 2026 Texas Republican Primary?</td>
           <td>YES</td>
@@ -373,6 +364,14 @@
           <td>YES</td>
           <td class="num">$5.00</td>
           <td>❌ NO</td>
+          <td class="num red">-5.00 $</td>
+        </tr>
+        <tr>
+          <td class="muted">2026-05-23 05:03</td>
+          <td>Will Elon Musk post 260-279 tweets from May 19 to May 26, 20</td>
+          <td>NO</td>
+          <td class="num">$5.00</td>
+          <td>❌ YES</td>
           <td class="num red">-5.00 $</td>
         </tr>
         <tr>
@@ -518,14 +517,6 @@
           <td class="num">$5.00</td>
           <td>❌ NO</td>
           <td class="num red">-5.00 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-18 15:41</td>
-          <td>Will a new Gemini flagship be released by May 22, 2026?</td>
-          <td>NO</td>
-          <td class="num">$5.00</td>
-          <td>💰 TP</td>
-          <td class="num green">+0.03 $</td>
         </tr></tbody>
     </table>
   </div>
@@ -684,9 +675,9 @@
     new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ["#1", "#2", "#3", "#4", "#5", "#6", "#7", "#8", "#9", "#10", "#11", "#12", "#13", "#14", "#15", "#16", "#17", "#18", "#19", "#20"],
+        labels: ["#1", "#2", "#3", "#4", "#5", "#6", "#7", "#8", "#9", "#10", "#11", "#12", "#13", "#14", "#15", "#16", "#17", "#18", "#19", "#20", "#21"],
         datasets: [{
-          label: 'P&L $', data: [0.0275, -4.9725, -4.892, -9.892, 15.2285, 10.2285, 10.2555, 20.4745, 15.4745, 16.357, 17.468, 12.468, 13.3015, 14.0545, 15.1685, 10.1685, 5.1685, 5.4315, 5.6945, 0.6945],
+          label: 'P&L $', data: [0.0275, -4.9725, -4.892, -9.892, 15.2285, 10.2285, 10.2555, 20.4745, 15.4745, 16.357, 17.468, 12.468, 13.3015, 14.0545, 15.1685, 10.1685, 5.1685, 5.4315, 5.6945, 0.6945, -4.3055],
           borderColor: '#ff1493', backgroundColor: 'rgba(255, 20, 147, 0.08)',
           borderWidth: 2, pointRadius: 3, pointBackgroundColor: '#ff1493',
           pointBorderColor: '#ffffff', pointBorderWidth: 1, fill: true,
