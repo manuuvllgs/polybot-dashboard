@@ -3,10 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="300">
-  <title>Polybot — Real</title>
+  <title>Polybot — Inicio</title>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
   <style>
     :root {
       --bg: #000000; --bg-secondary: #0a0a0a; --card: #0f0f0f;
@@ -235,6 +233,51 @@
       font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.7;
       color: var(--text); margin: 0;
     }
+    /* --- home: tarjetas grandes con icono --- */
+    .home-hero {
+      text-align: center; padding: 60px 20px 40px;
+      animation: slideUp 0.5s ease-out;
+    }
+    .home-hero h1 {
+      font-size: 38px; font-weight: 700; margin: 0 0 8px;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--accent-primary), #ff6ec7);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .home-hero .home-sub {
+      font-size: 14px; color: var(--text-secondary); margin: 0;
+    }
+    .home-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+      max-width: 760px; margin: 20px auto 0;
+    }
+    @media (max-width: 600px) {
+      .home-grid { grid-template-columns: 1fr; }
+      .home-hero h1 { font-size: 30px; }
+    }
+    a.home-card {
+      display: block; text-decoration: none; color: inherit;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px 24px; text-align: center;
+      transition: all 0.25s ease;
+      animation: slideUp 0.5s ease-out backwards;
+    }
+    a.home-card:nth-child(2) { animation-delay: 0.08s; }
+    a.home-card:hover {
+      border-color: var(--accent-primary);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(255, 20, 147, 0.18);
+    }
+    .home-card .hc-icon {
+      font-size: 44px; line-height: 1; margin-bottom: 14px;
+    }
+    .home-card .hc-title {
+      font-size: 18px; font-weight: 600; margin-bottom: 6px;
+    }
+    .home-card .hc-desc {
+      font-size: 12px; color: var(--text-secondary);
+    }
     /* --- paginación de tablas (estilo e-commerce) --- */
     .pagination {
       display: flex; justify-content: center; align-items: center; gap: 6px;
@@ -263,458 +306,31 @@
 </style>
 </head>
 <body>
-  <div class="header">
-    <h1>Polybot</h1>
-    <p class="handle">manuuvllgs</p>
-  </div>
-  <p class="sub">Actualizado 2026-05-27 23:11 · Auto-refresh cada 5 min</p>
-  <div class="grid">
-    <div class="card balance-card"><div class="card-label">Saldo</div>
-      <div class="balance-row">
-        <div class="card-value cyan" id="saldoValor">••••</div>
-        <button class="balance-button" id="verSaldoBtn" type="button">Ver saldo</button>
-      </div>
-      <div class="card-sub balance-status" id="saldoEstado">Cash disponible</div>
-      <form class="balance-form" id="saldoForm" hidden>
-        <input class="balance-input" id="saldoPassword" type="password" autocomplete="current-password" placeholder="Contraseña" aria-label="Contraseña para ver saldo">
-        <button class="balance-button" type="submit">Entrar</button>
-        <button class="balance-button secondary" id="saldoCancelBtn" type="button">Cancelar</button>
-      </form></div>
-    <div class="card"><div class="card-label">P&L Total</div>
-      <div class="card-value red">$-3.03</div>
-      <div class="card-sub">24 operaciones cerradas</div></div>
-    <div class="card"><div class="card-label">P&L Hoy</div>
-      <div class="card-value green">$+1.28</div>
-      <div class="card-sub">Desde las 00:00</div></div>
-    <div class="card"><div class="card-label">P&L 7 Días</div>
-      <div class="card-value red">$-3.03</div>
-      <div class="card-sub">Última semana</div></div>
-    <div class="card"><div class="card-label">Operaciones</div>
-      <div class="card-value">30</div>
-      <div class="card-sub">6 abiertas · 24 cerradas</div></div>
-    <div class="card"><div class="card-label">Win Rate</div>
-      <div class="card-value green">62%</div>
-      <div class="card-sub">24 operaciones</div></div>
-    <div class="card"><div class="card-label">Invertido</div>
-      <div class="card-value cyan">$40.00</div>
-      <div class="card-sub">En posiciones abiertas</div></div>
-    <div class="card"><div class="card-label">Ganancia Media</div>
-      <div class="card-value red">$-0.13</div>
-      <div class="card-sub">Por operación</div></div>
-    <div class="card"><div class="card-label">ROI Total</div>
-      <div class="card-value red">-2.2%</div>
-      <div class="card-sub">$140.00 invertidos</div></div>
-    <div class="card"><div class="card-label">ROI 7D</div>
-      <div class="card-value red">-2.2%</div>
-      <div class="card-sub">Últimos 7 días</div></div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">P&L Acumulado (USD)<span class="count">24 ops cerradas</span></div>
-    <canvas id='pnlChart' height='200'></canvas>
-  </div>
-
-  <div class="section">
-    <div class="section-title">Posiciones Abiertas<span class="count">6 · $40.00</span></div>
-    
-    <table>
-      <thead><tr><th>Abierta</th><th>Mercado</th><th>Dir</th><th>Precio</th><th>Size</th><th>Edge</th><th>Cierra</th></tr></thead>
-      <tbody>
-        <tr>
-          <td class="muted">2026-05-27 07:08</td>
-          <td>Will Gujarat Titans win the 2026 Indian Premier League?</td>
-          <td>NO</td>
-          <td class="num">76.9%</td>
-          <td class="num">$5.00</td>
-          <td class="num blue">-2.1%</td>
-          <td class="muted">2026-05-31</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-27 07:08</td>
-          <td>Israel closes its airspace by May 31?</td>
-          <td>NO</td>
-          <td class="num">95.0%</td>
-          <td class="num">$5.00</td>
-          <td class="num blue">-2.9%</td>
-          <td class="muted">2026-05-31</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-27 01:01</td>
-          <td>Will Elon Musk post 180-199 tweets from May 22 to May 29, 20</td>
-          <td>YES</td>
-          <td class="num">30.4%</td>
-          <td class="num">$5.00</td>
-          <td class="num blue">+2.7%</td>
-          <td class="muted">2026-05-29</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-26 19:11</td>
-          <td>US announces new Iran agreement/ceasefire extension by May 2</td>
-          <td>NO</td>
-          <td class="num">86.0%</td>
-          <td class="num">$5.00</td>
-          <td class="num blue">-2.6%</td>
-          <td class="muted">2026-05-28</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-26 17:55</td>
-          <td>Will Donald Trump announce that the United States blockade o</td>
-          <td>NO</td>
-          <td class="num">88.0%</td>
-          <td class="num">$10.00</td>
-          <td class="num blue">-3.1%</td>
-          <td class="muted">2026-05-28</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-23 12:16</td>
-          <td>Iran closes its airspace by May 27?</td>
-          <td>YES</td>
-          <td class="num">55.0%</td>
-          <td class="num">$10.00</td>
-          <td class="num blue">+7.7%</td>
-          <td class="muted">2026-05-27</td>
-        </tr></tbody>
-    </table>
-  </div>
-
-  <div class="section">
-    <div class="section-title">Historial Reciente<span class="count">24 ops cerradas</span></div>
-    
-    <div class="paginated" data-page-size="10">
-      <table>
-        <thead><tr><th>Fecha</th><th>Mercado</th><th>Dir</th><th>Size</th><th>Cierre</th><th>P&L</th></tr></thead>
-        <tbody>
-        <tr>
-          <td class="muted">2026-05-23 14:59</td>
-          <td>US x Iran permanent peace deal by May 26, 2026?</td>
-          <td>NO</td>
-          <td class="num">$10.00</td>
-          <td>✅ NO</td>
-          <td class="num green">+0.75 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-22 14:09</td>
-          <td>Will Ken Paxton win the 2026 Texas Republican Primary?</td>
-          <td>YES</td>
-          <td class="num">$5.00</td>
-          <td>✅ YES</td>
-          <td class="num green">+0.26 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-22 10:10</td>
-          <td>Will John Cornyn win the 2026 Texas Republican Primary?</td>
-          <td>NO</td>
-          <td class="num">$5.00</td>
-          <td>✅ NO</td>
-          <td class="num green">+0.26 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-23 05:03</td>
-          <td>Will Elon Musk post 340-359 tweets from May 19 to May 26, 20</td>
-          <td>YES</td>
-          <td class="num">$5.00</td>
-          <td>❌ NO</td>
-          <td class="num red">-5.00 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-23 05:03</td>
-          <td>Will Elon Musk post 260-279 tweets from May 19 to May 26, 20</td>
-          <td>NO</td>
-          <td class="num">$5.00</td>
-          <td>❌ YES</td>
-          <td class="num red">-5.00 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-23 01:05</td>
-          <td>Will "The Mandalorian and Grogu" 4-day Opening Weekend Box O</td>
-          <td>YES</td>
-          <td class="num">$5.00</td>
-          <td>❌ NO</td>
-          <td class="num red">-5.00 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-23 01:05</td>
-          <td>Will Elon Musk post 320-339 tweets from May 19 to May 26, 20</td>
-          <td>YES</td>
-          <td class="num">$5.00</td>
-          <td>❌ NO</td>
-          <td class="num red">-5.00 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-22 16:46</td>
-          <td>Will "The Mandalorian and Grogu" 4-day Opening Weekend Box O</td>
-          <td>NO</td>
-          <td class="num">$10.00</td>
-          <td>💰 TP</td>
-          <td class="num green">+1.11 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-23 01:23</td>
-          <td>Will Trump attend his son's wedding?</td>
-          <td>NO</td>
-          <td class="num">$5.00</td>
-          <td>✅ NO</td>
-          <td class="num green">+0.26 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-21 15:19</td>
-          <td>Will Bitcoin reach $80,000 May 18-24?</td>
-          <td>NO</td>
-          <td class="num">$5.00</td>
-          <td>💰 TP</td>
-          <td class="num green">+0.83 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-21 10:06</td>
-          <td>Will Bitcoin dip to $74,000 May 18-24?</td>
-          <td>NO</td>
-          <td class="num">$10.00</td>
-          <td>✅ NO</td>
-          <td class="num green">+1.11 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-23 01:23</td>
-          <td>Will the price of Bitcoin be above $78,000 on May 24?</td>
-          <td>NO</td>
-          <td class="num">$5.00</td>
-          <td>✅ NO</td>
-          <td class="num green">+0.26 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-22 14:01</td>
-          <td>Glory in Giza: Oleksandr Usyk vs. Rico Verhoeven</td>
-          <td>YES</td>
-          <td class="num">$10.00</td>
-          <td>✅ YES</td>
-          <td class="num green">+0.75 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-21 10:06</td>
-          <td>Spread: Manchester City FC (-1.5)</td>
-          <td>YES</td>
-          <td class="num">$5.00</td>
-          <td>❌ NO</td>
-          <td class="num red">-5.00 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-20 23:46</td>
-          <td>Israel closes its airspace by May 24?</td>
-          <td>NO</td>
-          <td class="num">$5.00</td>
-          <td>✅ NO</td>
-          <td class="num green">+0.88 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-20 13:15</td>
-          <td>Will Arsenal FC win on 2026-05-24?</td>
-          <td>NO</td>
-          <td class="num">$5.00</td>
-          <td>❌ YES</td>
-          <td class="num red">-5.00 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-20 10:46</td>
-          <td>Iran closes its airspace by May 24?</td>
-          <td>YES</td>
-          <td class="num">$5.00</td>
-          <td>💰 TP</td>
-          <td class="num green">+10.22 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-19 11:03</td>
-          <td>Will Elon Musk post 220-239 tweets from May 15 to May 22, 20</td>
-          <td>YES</td>
-          <td class="num">$5.00</td>
-          <td>❌ NO</td>
-          <td class="num red">-5.00 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-18 23:37</td>
-          <td>Will Elon Musk post 280-299 tweets from May 15 to May 22, 20</td>
-          <td>YES</td>
-          <td class="num">$5.00</td>
-          <td>✅ YES</td>
-          <td class="num green">+25.12 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-18 22:13</td>
-          <td>Will Elon Musk post 260-279 tweets from May 15 to May 22, 20</td>
-          <td>YES</td>
-          <td class="num">$5.00</td>
-          <td>❌ NO</td>
-          <td class="num red">-5.00 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-18 16:11</td>
-          <td>Will Elon Musk post 180-199 tweets from May 15 to May 22, 20</td>
-          <td>NO</td>
-          <td class="num">$5.00</td>
-          <td>💰 TP</td>
-          <td class="num green">+0.08 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-18 15:41</td>
-          <td>Will Elon Musk post 240-259 tweets from May 15 to May 22, 20</td>
-          <td>YES</td>
-          <td class="num">$5.00</td>
-          <td>❌ NO</td>
-          <td class="num red">-5.00 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-18 15:41</td>
-          <td>Will a new Gemini flagship be released by May 22, 2026?</td>
-          <td>NO</td>
-          <td class="num">$5.00</td>
-          <td>💰 TP</td>
-          <td class="num green">+0.03 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-19 17:36</td>
-          <td>Iran closes its airspace by May 21?</td>
-          <td>NO</td>
-          <td class="num">$5.00</td>
-          <td>💰 TP</td>
-          <td class="num green">+0.03 $</td>
-        </tr></tbody>
-      </table>
-      <div class="pagination"></div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">Oportunidades Activas (Recolector)<span class="count">5 mercados con edge ≥ umbral</span></div>
-    
-    <table>
-      <thead><tr><th>Detectada</th><th>Mercado</th><th>Dir</th><th>Precio</th><th>Edge</th><th>Cierra</th></tr></thead>
-      <tbody>
-        <tr>
-          <td class="muted">2026-05-27 21:10</td>
-          <td>Little Rock: Yuta Shimizu vs Bernard Tomic</td>
-          <td>YES</td>
-          <td class="num">81.5%</td>
-          <td class="num blue">+8.2%</td>
-          <td class="muted">2026-06-03</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-24 16:51</td>
-          <td>Will 20 ships transit the Strait of Hormuz on any day by May</td>
-          <td>YES</td>
-          <td class="num">80.5%</td>
-          <td class="num blue">+9.2%</td>
-          <td class="muted">2026-05-31</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-24 16:51</td>
-          <td>Will 20 ships transit the Strait of Hormuz on any day by May</td>
-          <td>YES</td>
-          <td class="num">80.5%</td>
-          <td class="num blue">+9.2%</td>
-          <td class="muted">2026-05-31</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-20 22:21</td>
-          <td>Will OpenAI IPO by December 31 2026?</td>
-          <td>YES</td>
-          <td class="num">70.5%</td>
-          <td class="num blue">+11.7%</td>
-          <td class="muted">—</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-16 12:09</td>
-          <td>Will SpaceX IPO by June 15, 2026?</td>
-          <td>YES</td>
-          <td class="num">75.2%</td>
-          <td class="num blue">+9.5%</td>
-          <td class="muted">2026-06-15</td>
-        </tr></tbody>
-    </table>
-  </div>
-
-  <div class="section">
-    <div class="section-title">Procesos</div>
-    <div class="procs"><div class="proc on">✓ Trader Real</div><div class="proc on">✓ Recolector</div><div class="proc on">✓ Evaluador</div><div class="proc on">✓ Monitor TP/SL</div><div class="proc on">✓ Telegram Bot</div><div class="proc on">✓ Publicador</div><div class="proc on">✓ Paper Trader</div></div>
-  </div>
-
-  <p class="footer">polybot · self-hosted</p>
-  <script>
-    const SALDO_REAL = "$65.85";
-    const SALDO_PASSWORD_HASH = "1fcb68ecb837c53ed5eac1992edbbcddeac07587120e9e4a6f373da0f7ae2e81";
-
-    async function sha256(text) {
-      const data = new TextEncoder().encode(text);
-      const digest = await crypto.subtle.digest('SHA-256', data);
-      return Array.from(new Uint8Array(digest))
-        .map((b) => b.toString(16).padStart(2, '0'))
-        .join('');
-    }
-
-    const valueEl = document.getElementById('saldoValor');
-    const statusEl = document.getElementById('saldoEstado');
-    const button = document.getElementById('verSaldoBtn');
-    const form = document.getElementById('saldoForm');
-    const passwordInput = document.getElementById('saldoPassword');
-    const cancelButton = document.getElementById('saldoCancelBtn');
-
-    function setFormVisible(visible) {
-      form.hidden = !visible;
-      if (visible) passwordInput.focus();
-    }
-
-    button.addEventListener('click', () => {
-      if (valueEl.dataset.visible === 'true') {
-        valueEl.textContent = '••••';
-        valueEl.dataset.visible = 'false';
-        button.textContent = 'Ver saldo';
-        statusEl.textContent = 'Cash disponible';
-        statusEl.classList.remove('error');
-        passwordInput.value = '';
-        setFormVisible(false);
-        return;
-      }
-
-      statusEl.textContent = 'Introduce la contraseña';
-      statusEl.classList.remove('error');
-      setFormVisible(true);
-    });
-
-    cancelButton.addEventListener('click', () => {
-      passwordInput.value = '';
-      statusEl.textContent = 'Cash disponible';
-      statusEl.classList.remove('error');
-      setFormVisible(false);
-    });
-
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-
-      try {
-        if (await sha256(passwordInput.value) === SALDO_PASSWORD_HASH) {
-          valueEl.textContent = SALDO_REAL;
-          valueEl.dataset.visible = 'true';
-          button.textContent = 'Ocultar';
-          statusEl.textContent = 'Saldo desbloqueado';
-          statusEl.classList.remove('error');
-          passwordInput.value = '';
-          setFormVisible(false);
-        } else {
-          statusEl.textContent = 'Contraseña incorrecta';
-          statusEl.classList.add('error');
-          passwordInput.value = '';
-          passwordInput.focus();
-        }
-      } catch (error) {
-        statusEl.textContent = 'No se pudo validar la contraseña';
-        statusEl.classList.add('error');
-      }
-    });
-  </script>
   <button class="menu-btn" id="menuBtn" type="button" aria-label="Abrir menú">&#9776;</button>
   <div class="menu-overlay" id="menuOverlay" hidden></div>
   <nav class="menu-panel" id="menuPanel" hidden>
     <div class="menu-head">Polybot</div>
-    <a href="index.html" class="active">Panel</a>
+    <a href="index.html" class="active">Inicio</a>
+    <a href="panel.html">Panel del bot</a>
     <a href="informes.html">Informes semanales</a>
   </nav>
+  <div class="home-hero">
+    <h1>Polybot</h1>
+    <p class="home-sub">Trading automatizado en Polymarket</p>
+  </div>
+  <div class="home-grid">
+    <a class="home-card" href="panel.html">
+      <div class="hc-icon">&#128202;</div>
+      <div class="hc-title">Panel del bot</div>
+      <div class="hc-desc">M&eacute;tricas, posiciones abiertas y cerradas, P&amp;L</div>
+    </a>
+    <a class="home-card" href="informes.html">
+      <div class="hc-icon">&#128200;</div>
+      <div class="hc-title">Informes semanales</div>
+      <div class="hc-desc">Hist&oacute;rico de res&uacute;menes y recomendaciones</div>
+    </a>
+  </div>
+  <p class="footer">polybot &middot; self-hosted</p>
   <script>
     (function () {
       var btn = document.getElementById('menuBtn');
@@ -729,106 +345,5 @@
       });
     })();
 </script>
-  <script>
-    (function () {
-      document.querySelectorAll('.paginated').forEach(function (cont) {
-        var tbody = cont.querySelector('tbody');
-        var nav = cont.querySelector('.pagination');
-        if (!tbody || !nav) return;
-        var size = parseInt(cont.getAttribute('data-page-size') || '10', 10);
-        var rows = Array.prototype.slice.call(tbody.children);
-        if (rows.length <= size) { nav.style.display = 'none'; return; }
-        var totalPaginas = Math.ceil(rows.length / size);
-        var actual = 1;
-
-        function mostrarPagina(p) {
-          actual = Math.max(1, Math.min(totalPaginas, p));
-          var ini = (actual - 1) * size;
-          var fin = ini + size;
-          rows.forEach(function (tr, i) {
-            tr.style.display = (i >= ini && i < fin) ? '' : 'none';
-          });
-          renderNav();
-        }
-
-        function botonPagina(p, label, deshabilitado, activo) {
-          var b = document.createElement('button');
-          b.textContent = label || String(p);
-          if (deshabilitado) b.disabled = true;
-          if (activo) b.classList.add('active');
-          b.addEventListener('click', function () { mostrarPagina(p); });
-          return b;
-        }
-
-        function paginasVisibles() {
-          // Compresión: siempre 1, totalPaginas, actual ± 1.
-          if (totalPaginas <= 7) {
-            var arr = [];
-            for (var i = 1; i <= totalPaginas; i++) arr.push(i);
-            return arr;
-          }
-          var s = new Set([1, totalPaginas, actual]);
-          if (actual - 1 > 1) s.add(actual - 1);
-          if (actual + 1 < totalPaginas) s.add(actual + 1);
-          var pags = Array.from(s).sort(function (a, b) { return a - b; });
-          var res = [];
-          for (var i = 0; i < pags.length; i++) {
-            if (i > 0 && pags[i] !== pags[i - 1] + 1) res.push('...');
-            res.push(pags[i]);
-          }
-          return res;
-        }
-
-        function renderNav() {
-          nav.innerHTML = '';
-          nav.appendChild(botonPagina(actual - 1, '« Ant', actual === 1, false));
-          paginasVisibles().forEach(function (p) {
-            if (p === '...') {
-              var span = document.createElement('span');
-              span.className = 'ellipsis'; span.textContent = '…';
-              nav.appendChild(span);
-            } else {
-              nav.appendChild(botonPagina(p, null, false, p === actual));
-            }
-          });
-          nav.appendChild(botonPagina(actual + 1, 'Sig »', actual === totalPaginas, false));
-          var info = document.createElement('span');
-          info.className = 'info';
-          var hasta = Math.min(actual * size, rows.length);
-          info.textContent = ((actual - 1) * size + 1) + '–' + hasta + ' de ' + rows.length;
-          nav.appendChild(info);
-        }
-
-        mostrarPagina(1);
-      });
-    })();
-</script>
-
-  <script>
-    const ctx = document.getElementById('pnlChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ["#1", "#2", "#3", "#4", "#5", "#6", "#7", "#8", "#9", "#10", "#11", "#12", "#13", "#14", "#15", "#16", "#17", "#18", "#19", "#20", "#21", "#22", "#23", "#24"],
-        datasets: [{
-          label: 'P&L $', data: [0.0275, -4.9725, -4.892, -9.892, 15.2285, 10.2285, 10.2555, 20.4745, 15.4745, 16.357, 17.468, 12.468, 13.3015, 13.5645, 14.3175, 14.5805, 15.6945, 10.6945, 5.6945, 5.9575, 6.2205, 1.2205, -3.7795, -3.0265],
-          borderColor: '#ff1493', backgroundColor: 'rgba(255, 20, 147, 0.08)',
-          borderWidth: 2, pointRadius: 3, pointBackgroundColor: '#ff1493',
-          pointBorderColor: '#ffffff', pointBorderWidth: 1, fill: true,
-          tension: 0.3, pointHoverRadius: 5,
-        }]
-      },
-      options: {
-        responsive: true, maintainAspectRatio: true,
-        plugins: { legend: { display: false } },
-        scales: {
-          y: { beginAtZero: true,
-            grid: { color: 'rgba(255, 255, 255, 0.08)', drawBorder: false },
-            ticks: { color: '#999999', callback: function(v){return '$'+v.toFixed(2);}, font: { size: 11 } } },
-          x: { grid: { display: false }, ticks: { color: '#999999', font: { size: 11 } } }
-        }
-      }
-    });
-  </script>
 </body>
 </html>

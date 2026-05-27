@@ -233,6 +233,51 @@
       font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.7;
       color: var(--text); margin: 0;
     }
+    /* --- home: tarjetas grandes con icono --- */
+    .home-hero {
+      text-align: center; padding: 60px 20px 40px;
+      animation: slideUp 0.5s ease-out;
+    }
+    .home-hero h1 {
+      font-size: 38px; font-weight: 700; margin: 0 0 8px;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--accent-primary), #ff6ec7);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .home-hero .home-sub {
+      font-size: 14px; color: var(--text-secondary); margin: 0;
+    }
+    .home-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+      max-width: 760px; margin: 20px auto 0;
+    }
+    @media (max-width: 600px) {
+      .home-grid { grid-template-columns: 1fr; }
+      .home-hero h1 { font-size: 30px; }
+    }
+    a.home-card {
+      display: block; text-decoration: none; color: inherit;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px 24px; text-align: center;
+      transition: all 0.25s ease;
+      animation: slideUp 0.5s ease-out backwards;
+    }
+    a.home-card:nth-child(2) { animation-delay: 0.08s; }
+    a.home-card:hover {
+      border-color: var(--accent-primary);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(255, 20, 147, 0.18);
+    }
+    .home-card .hc-icon {
+      font-size: 44px; line-height: 1; margin-bottom: 14px;
+    }
+    .home-card .hc-title {
+      font-size: 18px; font-weight: 600; margin-bottom: 6px;
+    }
+    .home-card .hc-desc {
+      font-size: 12px; color: var(--text-secondary);
+    }
     /* --- paginación de tablas (estilo e-commerce) --- */
     .pagination {
       display: flex; justify-content: center; align-items: center; gap: 6px;
@@ -265,10 +310,11 @@
   <div class="menu-overlay" id="menuOverlay" hidden></div>
   <nav class="menu-panel" id="menuPanel" hidden>
     <div class="menu-head">Polybot</div>
-    <a href="index.html">Panel</a>
+    <a href="index.html">Inicio</a>
+    <a href="panel.html">Panel del bot</a>
     <a href="informes.html" class="active">Informes semanales</a>
   </nav>
-  <a class="back-link" href="index.html">&larr; Panel</a>
+  <a class="back-link" href="index.html">&larr; Inicio</a>
   <div class="header">
     <h1>Informes</h1>
     <p class="handle">semanales</p>
