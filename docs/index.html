@@ -235,6 +235,31 @@
       font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.7;
       color: var(--text); margin: 0;
     }
+    /* --- paginación de tablas (estilo e-commerce) --- */
+    .pagination {
+      display: flex; justify-content: center; align-items: center; gap: 6px;
+      margin-top: 16px; flex-wrap: wrap;
+    }
+    .pagination button {
+      min-width: 34px; height: 34px; padding: 0 10px; border-radius: 8px;
+      background: var(--card); border: 1px solid var(--border);
+      color: var(--text); font-size: 13px; cursor: pointer;
+      transition: all 0.15s ease; font-family: inherit;
+    }
+    .pagination button:hover:not(:disabled):not(.active) {
+      border-color: var(--accent-primary); color: var(--accent-primary);
+    }
+    .pagination button.active {
+      background: var(--accent-primary); color: #fff; border-color: var(--accent-primary);
+      font-weight: 600;
+    }
+    .pagination button:disabled { opacity: 0.35; cursor: not-allowed; }
+    .pagination .ellipsis {
+      color: var(--text-secondary); padding: 0 4px; user-select: none;
+    }
+    .pagination .info {
+      margin-left: 10px; font-size: 12px; color: var(--text-secondary);
+    }
 </style>
 </head>
 <body>
@@ -242,7 +267,7 @@
     <h1>Polybot</h1>
     <p class="handle">manuuvllgs</p>
   </div>
-  <p class="sub">Actualizado 2026-05-27 18:39 · Auto-refresh cada 5 min</p>
+  <p class="sub">Actualizado 2026-05-27 18:44 · Auto-refresh cada 5 min</p>
   <div class="grid">
     <div class="card balance-card"><div class="card-label">Saldo</div>
       <div class="balance-row">
@@ -355,20 +380,45 @@
   <div class="section">
     <div class="section-title">Historial Reciente<span class="count">Últimas 20</span></div>
     
-    <table>
-      <thead><tr><th>Fecha</th><th>Mercado</th><th>Dir</th><th>Size</th><th>Cierre</th><th>P&L</th></tr></thead>
-      <tbody>
+    <div class="paginated" data-page-size="10">
+      <table>
+        <thead><tr><th>Fecha</th><th>Mercado</th><th>Dir</th><th>Size</th><th>Cierre</th><th>P&L</th></tr></thead>
+        <tbody>
         <tr>
-          <td class="muted">2026-05-23 14:59</td>
-          <td>US x Iran permanent peace deal by May 26, 2026?</td>
+          <td class="muted">2026-05-22 10:10</td>
+          <td>Will John Cornyn win the 2026 Texas Republican Primary?</td>
           <td>NO</td>
-          <td class="num">$10.00</td>
+          <td class="num">$5.00</td>
           <td>✅ NO</td>
-          <td class="num green">+0.75 $</td>
+          <td class="num green">+0.26 $</td>
         </tr>
         <tr>
-          <td class="muted">2026-05-23 05:03</td>
-          <td>Will Elon Musk post 340-359 tweets from May 19 to May 26, 20</td>
+          <td class="muted">2026-05-22 14:09</td>
+          <td>Will Ken Paxton win the 2026 Texas Republican Primary?</td>
+          <td>YES</td>
+          <td class="num">$5.00</td>
+          <td>✅ YES</td>
+          <td class="num green">+0.26 $</td>
+        </tr>
+        <tr>
+          <td class="muted">2026-05-22 16:46</td>
+          <td>Will "The Mandalorian and Grogu" 4-day Opening Weekend Box O</td>
+          <td>NO</td>
+          <td class="num">$10.00</td>
+          <td>💰 TP</td>
+          <td class="num green">+1.11 $</td>
+        </tr>
+        <tr>
+          <td class="muted">2026-05-23 01:05</td>
+          <td>Will Elon Musk post 320-339 tweets from May 19 to May 26, 20</td>
+          <td>YES</td>
+          <td class="num">$5.00</td>
+          <td>❌ NO</td>
+          <td class="num red">-5.00 $</td>
+        </tr>
+        <tr>
+          <td class="muted">2026-05-23 01:05</td>
+          <td>Will "The Mandalorian and Grogu" 4-day Opening Weekend Box O</td>
           <td>YES</td>
           <td class="num">$5.00</td>
           <td>❌ NO</td>
@@ -383,84 +433,20 @@
           <td class="num red">-5.00 $</td>
         </tr>
         <tr>
-          <td class="muted">2026-05-23 01:23</td>
-          <td>Will the price of Bitcoin be above $78,000 on May 24?</td>
-          <td>NO</td>
-          <td class="num">$5.00</td>
-          <td>✅ NO</td>
-          <td class="num green">+0.26 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-23 01:23</td>
-          <td>Will Trump attend his son's wedding?</td>
-          <td>NO</td>
-          <td class="num">$5.00</td>
-          <td>✅ NO</td>
-          <td class="num green">+0.26 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-23 01:05</td>
-          <td>Will "The Mandalorian and Grogu" 4-day Opening Weekend Box O</td>
+          <td class="muted">2026-05-23 05:03</td>
+          <td>Will Elon Musk post 340-359 tweets from May 19 to May 26, 20</td>
           <td>YES</td>
           <td class="num">$5.00</td>
           <td>❌ NO</td>
           <td class="num red">-5.00 $</td>
         </tr>
         <tr>
-          <td class="muted">2026-05-23 01:05</td>
-          <td>Will Elon Musk post 320-339 tweets from May 19 to May 26, 20</td>
-          <td>YES</td>
-          <td class="num">$5.00</td>
-          <td>❌ NO</td>
-          <td class="num red">-5.00 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-22 16:46</td>
-          <td>Will "The Mandalorian and Grogu" 4-day Opening Weekend Box O</td>
+          <td class="muted">2026-05-23 14:59</td>
+          <td>US x Iran permanent peace deal by May 26, 2026?</td>
           <td>NO</td>
           <td class="num">$10.00</td>
-          <td>💰 TP</td>
-          <td class="num green">+1.11 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-22 14:09</td>
-          <td>Will Ken Paxton win the 2026 Texas Republican Primary?</td>
-          <td>YES</td>
-          <td class="num">$5.00</td>
-          <td>✅ YES</td>
-          <td class="num green">+0.26 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-22 14:01</td>
-          <td>Glory in Giza: Oleksandr Usyk vs. Rico Verhoeven</td>
-          <td>YES</td>
-          <td class="num">$10.00</td>
-          <td>✅ YES</td>
+          <td>✅ NO</td>
           <td class="num green">+0.75 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-22 10:10</td>
-          <td>Will John Cornyn win the 2026 Texas Republican Primary?</td>
-          <td>NO</td>
-          <td class="num">$5.00</td>
-          <td>✅ NO</td>
-          <td class="num green">+0.26 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-21 15:19</td>
-          <td>Will Bitcoin reach $80,000 May 18-24?</td>
-          <td>NO</td>
-          <td class="num">$5.00</td>
-          <td>💰 TP</td>
-          <td class="num green">+0.83 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-21 10:06</td>
-          <td>Spread: Manchester City FC (-1.5)</td>
-          <td>YES</td>
-          <td class="num">$5.00</td>
-          <td>❌ NO</td>
-          <td class="num red">-5.00 $</td>
         </tr>
         <tr>
           <td class="muted">2026-05-21 10:06</td>
@@ -471,20 +457,20 @@
           <td class="num green">+1.11 $</td>
         </tr>
         <tr>
-          <td class="muted">2026-05-20 23:46</td>
-          <td>Israel closes its airspace by May 24?</td>
+          <td class="muted">2026-05-21 15:19</td>
+          <td>Will Bitcoin reach $80,000 May 18-24?</td>
+          <td>NO</td>
+          <td class="num">$5.00</td>
+          <td>💰 TP</td>
+          <td class="num green">+0.83 $</td>
+        </tr>
+        <tr>
+          <td class="muted">2026-05-23 01:23</td>
+          <td>Will Trump attend his son's wedding?</td>
           <td>NO</td>
           <td class="num">$5.00</td>
           <td>✅ NO</td>
-          <td class="num green">+0.88 $</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-20 13:15</td>
-          <td>Will Arsenal FC win on 2026-05-24?</td>
-          <td>NO</td>
-          <td class="num">$5.00</td>
-          <td>❌ YES</td>
-          <td class="num red">-5.00 $</td>
+          <td class="num green">+0.26 $</td>
         </tr>
         <tr>
           <td class="muted">2026-05-20 10:46</td>
@@ -495,16 +481,72 @@
           <td class="num green">+10.22 $</td>
         </tr>
         <tr>
-          <td class="muted">2026-05-19 17:36</td>
-          <td>Iran closes its airspace by May 21?</td>
+          <td class="muted">2026-05-20 13:15</td>
+          <td>Will Arsenal FC win on 2026-05-24?</td>
+          <td>NO</td>
+          <td class="num">$5.00</td>
+          <td>❌ YES</td>
+          <td class="num red">-5.00 $</td>
+        </tr>
+        <tr>
+          <td class="muted">2026-05-20 23:46</td>
+          <td>Israel closes its airspace by May 24?</td>
+          <td>NO</td>
+          <td class="num">$5.00</td>
+          <td>✅ NO</td>
+          <td class="num green">+0.88 $</td>
+        </tr>
+        <tr>
+          <td class="muted">2026-05-21 10:06</td>
+          <td>Spread: Manchester City FC (-1.5)</td>
+          <td>YES</td>
+          <td class="num">$5.00</td>
+          <td>❌ NO</td>
+          <td class="num red">-5.00 $</td>
+        </tr>
+        <tr>
+          <td class="muted">2026-05-22 14:01</td>
+          <td>Glory in Giza: Oleksandr Usyk vs. Rico Verhoeven</td>
+          <td>YES</td>
+          <td class="num">$10.00</td>
+          <td>✅ YES</td>
+          <td class="num green">+0.75 $</td>
+        </tr>
+        <tr>
+          <td class="muted">2026-05-23 01:23</td>
+          <td>Will the price of Bitcoin be above $78,000 on May 24?</td>
+          <td>NO</td>
+          <td class="num">$5.00</td>
+          <td>✅ NO</td>
+          <td class="num green">+0.26 $</td>
+        </tr>
+        <tr>
+          <td class="muted">2026-05-18 15:41</td>
+          <td>Will a new Gemini flagship be released by May 22, 2026?</td>
           <td>NO</td>
           <td class="num">$5.00</td>
           <td>💰 TP</td>
           <td class="num green">+0.03 $</td>
         </tr>
         <tr>
-          <td class="muted">2026-05-19 11:03</td>
-          <td>Will Elon Musk post 220-239 tweets from May 15 to May 22, 20</td>
+          <td class="muted">2026-05-18 15:41</td>
+          <td>Will Elon Musk post 240-259 tweets from May 15 to May 22, 20</td>
+          <td>YES</td>
+          <td class="num">$5.00</td>
+          <td>❌ NO</td>
+          <td class="num red">-5.00 $</td>
+        </tr>
+        <tr>
+          <td class="muted">2026-05-18 16:11</td>
+          <td>Will Elon Musk post 180-199 tweets from May 15 to May 22, 20</td>
+          <td>NO</td>
+          <td class="num">$5.00</td>
+          <td>💰 TP</td>
+          <td class="num green">+0.08 $</td>
+        </tr>
+        <tr>
+          <td class="muted">2026-05-18 22:13</td>
+          <td>Will Elon Musk post 260-279 tweets from May 15 to May 22, 20</td>
           <td>YES</td>
           <td class="num">$5.00</td>
           <td>❌ NO</td>
@@ -517,38 +559,40 @@
           <td class="num">$5.00</td>
           <td>✅ YES</td>
           <td class="num green">+25.12 $</td>
+        </tr>
+        <tr>
+          <td class="muted">2026-05-19 11:03</td>
+          <td>Will Elon Musk post 220-239 tweets from May 15 to May 22, 20</td>
+          <td>YES</td>
+          <td class="num">$5.00</td>
+          <td>❌ NO</td>
+          <td class="num red">-5.00 $</td>
+        </tr>
+        <tr>
+          <td class="muted">2026-05-19 17:36</td>
+          <td>Iran closes its airspace by May 21?</td>
+          <td>NO</td>
+          <td class="num">$5.00</td>
+          <td>💰 TP</td>
+          <td class="num green">+0.03 $</td>
         </tr></tbody>
-    </table>
+      </table>
+      <div class="pagination"></div>
+    </div>
   </div>
 
   <div class="section">
-    <div class="section-title">Oportunidades Activas (Recolector)<span class="count">8 mercados con edge ≥ umbral</span></div>
+    <div class="section-title">Oportunidades Activas (Recolector)<span class="count">6 mercados con edge ≥ umbral</span></div>
     
     <table>
       <thead><tr><th>Detectada</th><th>Mercado</th><th>Dir</th><th>Precio</th><th>Edge</th><th>Cierra</th></tr></thead>
       <tbody>
         <tr>
           <td class="muted">2026-05-27 17:24</td>
-          <td>Roland Garros ATP: Nuno Borges vs Miomir Kecmanovic</td>
-          <td>YES</td>
-          <td class="num">75.5%</td>
-          <td class="num blue">+9.1%</td>
-          <td class="muted">2026-06-03</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-27 17:24</td>
           <td>Indian Premier League: Sunrisers Hyderabad vs Rajasthan Roya</td>
           <td>NO</td>
           <td class="num">16.5%</td>
           <td class="num blue">-8.9%</td>
-          <td class="muted">2026-06-03</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-27 17:24</td>
-          <td>Roland Garros WTA: Yulia Starodubtseva vs Elena Rybakina</td>
-          <td>YES</td>
-          <td class="num">49.0%</td>
-          <td class="num blue">+9.7%</td>
           <td class="muted">2026-06-03</td>
         </tr>
         <tr>
@@ -690,6 +734,80 @@
       overlay.addEventListener('click', function () { mostrar(false); });
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') mostrar(false);
+      });
+    })();
+</script>
+  <script>
+    (function () {
+      document.querySelectorAll('.paginated').forEach(function (cont) {
+        var tbody = cont.querySelector('tbody');
+        var nav = cont.querySelector('.pagination');
+        if (!tbody || !nav) return;
+        var size = parseInt(cont.getAttribute('data-page-size') || '10', 10);
+        var rows = Array.prototype.slice.call(tbody.children);
+        if (rows.length <= size) { nav.style.display = 'none'; return; }
+        var totalPaginas = Math.ceil(rows.length / size);
+        var actual = 1;
+
+        function mostrarPagina(p) {
+          actual = Math.max(1, Math.min(totalPaginas, p));
+          var ini = (actual - 1) * size;
+          var fin = ini + size;
+          rows.forEach(function (tr, i) {
+            tr.style.display = (i >= ini && i < fin) ? '' : 'none';
+          });
+          renderNav();
+        }
+
+        function botonPagina(p, label, deshabilitado, activo) {
+          var b = document.createElement('button');
+          b.textContent = label || String(p);
+          if (deshabilitado) b.disabled = true;
+          if (activo) b.classList.add('active');
+          b.addEventListener('click', function () { mostrarPagina(p); });
+          return b;
+        }
+
+        function paginasVisibles() {
+          // Compresión: siempre 1, totalPaginas, actual ± 1.
+          if (totalPaginas <= 7) {
+            var arr = [];
+            for (var i = 1; i <= totalPaginas; i++) arr.push(i);
+            return arr;
+          }
+          var s = new Set([1, totalPaginas, actual]);
+          if (actual - 1 > 1) s.add(actual - 1);
+          if (actual + 1 < totalPaginas) s.add(actual + 1);
+          var pags = Array.from(s).sort(function (a, b) { return a - b; });
+          var res = [];
+          for (var i = 0; i < pags.length; i++) {
+            if (i > 0 && pags[i] !== pags[i - 1] + 1) res.push('...');
+            res.push(pags[i]);
+          }
+          return res;
+        }
+
+        function renderNav() {
+          nav.innerHTML = '';
+          nav.appendChild(botonPagina(actual - 1, '« Ant', actual === 1, false));
+          paginasVisibles().forEach(function (p) {
+            if (p === '...') {
+              var span = document.createElement('span');
+              span.className = 'ellipsis'; span.textContent = '…';
+              nav.appendChild(span);
+            } else {
+              nav.appendChild(botonPagina(p, null, false, p === actual));
+            }
+          });
+          nav.appendChild(botonPagina(actual + 1, 'Sig »', actual === totalPaginas, false));
+          var info = document.createElement('span');
+          info.className = 'info';
+          var hasta = Math.min(actual * size, rows.length);
+          info.textContent = ((actual - 1) * size + 1) + '–' + hasta + ' de ' + rows.length;
+          nav.appendChild(info);
+        }
+
+        mostrarPagina(1);
       });
     })();
 </script>
