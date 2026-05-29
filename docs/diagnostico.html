@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Informe 2026-W21 — Polybot</title>
+  <title>Diagnóstico — Polybot</title>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -470,40 +470,228 @@
     <div class="menu-head">Polybot</div>
     <a href="index.html">Inicio</a>
     <a href="panel.html">Panel del bot</a>
-    <a href="informes.html" class="active">Informes semanales</a>
-    <a href="diagnostico.html">Diagnóstico</a>
+    <a href="informes.html">Informes semanales</a>
+    <a href="diagnostico.html" class="active">Diagnóstico</a>
   </nav>
-  <a class="back-link" href="informes.html">&larr; Informes semanales</a>
+  <a class="back-link" href="index.html">&larr; Inicio</a>
   <div class="header">
-    <h1>Informe</h1>
-    <p class="handle">semana 2026-W21</p>
+    <h1>Diagnóstico</h1>
+    <p class="handle">salud, calibración y rechazos</p>
   </div>
-  <p class="sub">Generado el 2026-05-23 20:23</p>
+  <p class="sub">Visión interna del bot: si el modelo está derivando, qué procesos van bien y qué oportunidades se están descartando.</p>
+
   <div class="section">
-    <pre class="informe-pre">RESUMEN SEMANAL — 2026-05-23 20:23
-
-Primer resumen: aún no hay histórico con el que comparar.
-
-Acumulado: 10 operaciones cerradas
-  P&amp;L total:  $+22.42   (ROI +40.8% sobre $55)
-  Win rate:   70%  (7/10 en verde, pero solo 4 son ganancias relevantes; 3 son cierres mínimos)
-  Abiertas:   15 posiciones, $95.00 en juego (sin resolver)
-
-Concentración del beneficio:
-  P&amp;L total:          $+22.42
-  sin la mejor op:    $-2.70
-  sin las 2 mejores:  $-12.92
-  Conclusión: el beneficio depende de UNA sola operación; sin ella estarías en negativo.
-
-Muestra: 10 de ~45 operaciones cerradas.
-
-RECOMENDACIÓN — qué estrategia seguir
-  &gt;&gt; MANTENER EL PERFIL CONSERVADOR. No meter más dinero ni subir la agresividad todavía.
-  Motivo: solo hay 10 operaciones cerradas de las ~45 que harían falta. Con tan pocos datos no se distingue una ventaja real de la suerte; meter más capital ahora sería apostar a ciegas.
-
-(Orientación basada en los datos, no asesoramiento financiero; la decisión es tuya.)</pre>
+    <div class="section-title">Salud de los procesos<span class="count">9/9 OK</span></div>
+    <div class="diag-grid">
+    <div class="diag-proc ok">
+      <div class="dp-name"><span class="dp-dot"></span>Trader real</div>
+      <div class="dp-meta">
+        vivo
+         · últ. 23:17:03
+         · -0.0 min
+      </div>
+    </div>
+    <div class="diag-proc ok">
+      <div class="dp-name"><span class="dp-dot"></span>Evaluador</div>
+      <div class="dp-meta">
+        vivo
+         · últ. 23:17:03
+         · 0.0 min
+      </div>
+    </div>
+    <div class="diag-proc ok">
+      <div class="dp-name"><span class="dp-dot"></span>Monitor TP/SL</div>
+      <div class="dp-meta">
+        vivo
+         · últ. 23:17:03
+         · 0.0 min
+      </div>
+    </div>
+    <div class="diag-proc ok">
+      <div class="dp-name"><span class="dp-dot"></span>Recolector</div>
+      <div class="dp-meta">
+        vivo
+         · últ. 23:17:03
+         · 0.0 min
+      </div>
+    </div>
+    <div class="diag-proc ok">
+      <div class="dp-name"><span class="dp-dot"></span>Telegram bot</div>
+      <div class="dp-meta">
+        vivo
+         · últ. 23:17:03
+         · 0.0 min
+      </div>
+    </div>
+    <div class="diag-proc ok">
+      <div class="dp-name"><span class="dp-dot"></span>Publicador</div>
+      <div class="dp-meta">
+        vivo
+         · últ. 23:17:03
+         · 0.0 min
+      </div>
+    </div>
+    <div class="diag-proc ok">
+      <div class="dp-name"><span class="dp-dot"></span>Resumen semanal</div>
+      <div class="dp-meta">
+        vivo
+         · últ. 23:17:03
+         · 0.0 min
+      </div>
+    </div>
+    <div class="diag-proc ok">
+      <div class="dp-name"><span class="dp-dot"></span>Mantenimiento</div>
+      <div class="dp-meta">
+        vivo
+         · últ. 23:17:03
+         · 0.0 min
+      </div>
+    </div>
+    <div class="diag-proc ok">
+      <div class="dp-name"><span class="dp-dot"></span>Paper trader</div>
+      <div class="dp-meta">
+        vivo
+         · últ. 23:17:03
+         · 0.0 min
+      </div>
+    </div>
+    </div>
   </div>
+
+  <div class="section">
+    <div class="section-title">Calibración del modelo<span class="count">25 resueltas YES/NO</span></div>
+    <p class="sub">Por bucket de prob_estimada: lo que el modelo predijo de media frente a la frecuencia real con la que ocurrió YES. Cuanto más se acerquen los pares de barras, mejor calibrado.</p>
+    <div class="calib-leyenda">
+      <span><span class="lg-pill" style="background:#a855f7"></span>Predicho</span>
+      <span><span class="lg-pill" style="background:#ff1493"></span>Real</span>
+    </div>
+    <div class="calib-chart-wrap"><canvas id="calibChart"></canvas></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">P&amp;L por bucket de precio pagado<span class="count">32 ops cerradas</span></div>
+    <p class="sub">Dónde gana y dónde pierde el bot según el precio efectivo de compra.</p>
+    
+        <div class="bucket-row">
+          <div class="br-label"><0.30 <span style="color:var(--text-secondary);font-size:10px">(n=7, win 14%)</span></div>
+          <div class="br-bar"><div class="br-fill neg" style="right: 50%; left: auto; width: 14.5%"></div></div>
+          <div class="br-val neg">$-4.88</div>
+        </div>
+        <div class="bucket-row">
+          <div class="br-label">0.30–0.60 <span style="color:var(--text-secondary);font-size:10px">(n=4, win 25%)</span></div>
+          <div class="br-bar"><div class="br-fill neg" style="right: 50%; left: auto; width: 25.4%"></div></div>
+          <div class="br-val neg">$-8.55</div>
+        </div>
+        <div class="bucket-row">
+          <div class="br-label">0.60–0.85 <span style="color:var(--text-secondary);font-size:10px">(n=1, win 100%)</span></div>
+          <div class="br-bar"><div class="br-fill pos" style="left: 50%; width: 11.1%"></div></div>
+          <div class="br-val pos">$+3.75</div>
+        </div>
+        <div class="bucket-row">
+          <div class="br-label">≥0.85 <span style="color:var(--text-secondary);font-size:10px">(n=20, win 95%)</span></div>
+          <div class="br-bar"><div class="br-fill pos" style="left: 50%; width: 50%"></div></div>
+          <div class="br-val pos">$+16.83</div>
+        </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Aciertos por bucket de prob_estimada<span class="count">con IC Wilson 95%</span></div>
+    <p class="sub">Tasa real de aciertos con intervalo de confianza. Si el intervalo cruza 50% el modelo no distingue de azar en ese bucket.</p>
+    
+        <div class="bucket-row">
+          <div class="br-label">0–5% <span style="color:var(--text-secondary);font-size:10px">(n=11)</span></div>
+          <div class="br-bar"><div class="br-fill pos" style="left:0;width:90.9%"></div></div>
+          <div class="br-val">90% <span style="color:var(--text-secondary);font-size:10px">[62–98]</span></div>
+        </div>
+        <div class="bucket-row">
+          <div class="br-label">5–15% <span style="color:var(--text-secondary);font-size:10px">(n=4)</span></div>
+          <div class="br-bar"><div class="br-fill pos" style="left:0;width:100.0%"></div></div>
+          <div class="br-val">100% <span style="color:var(--text-secondary);font-size:10px">[51–100]</span></div>
+        </div>
+        <div class="bucket-row">
+          <div class="br-label">15–30% <span style="color:var(--text-secondary);font-size:10px">(n=6)</span></div>
+          <div class="br-bar"><div class="br-fill pos" style="left:0;width:16.7%"></div></div>
+          <div class="br-val">16% <span style="color:var(--text-secondary);font-size:10px">[3–56]</span></div>
+        </div>
+        <div class="bucket-row">
+          <div class="br-label">30–50% <span style="color:var(--text-secondary);font-size:10px">(n=4)</span></div>
+          <div class="br-bar"><div class="br-fill pos" style="left:0;width:50.0%"></div></div>
+          <div class="br-val">50% <span style="color:var(--text-secondary);font-size:10px">[15–85]</span></div>
+        </div>
+        <div class="bucket-row">
+          <div class="br-label">50–70% <span style="color:var(--text-secondary);font-size:10px">(n=2)</span></div>
+          <div class="br-bar"><div class="br-fill pos" style="left:0;width:0.0%"></div></div>
+          <div class="br-val">0% <span style="color:var(--text-secondary);font-size:10px">[0–65]</span></div>
+        </div>
+        <div class="bucket-row">
+          <div class="br-label">85–100% <span style="color:var(--text-secondary);font-size:10px">(n=5)</span></div>
+          <div class="br-bar"><div class="br-fill pos" style="left:0;width:100.0%"></div></div>
+          <div class="br-val">100% <span style="color:var(--text-secondary);font-size:10px">[56–100]</span></div>
+        </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Histórico de rechazos<span class="count">por motivo</span></div>
+    
+    <p class="empty">Aún no hay rechazos registrados. El trader empezará a anotarlos cuando vea oportunidades que descarte por filtro.</p>
+  </div>
+
   <p class="footer">polybot &middot; self-hosted</p>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script>
+    (function() {
+      var ctx = document.getElementById('calibChart');
+      if (!ctx || typeof Chart === 'undefined') return;
+      var diag = (typeof Chart.defaults.color !== 'undefined');
+      Chart.defaults.color = '#9ca3af';
+      Chart.defaults.font.family = "'JetBrains Mono', monospace";
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['0–5%', '5–15%', '15–30%', '30–50%', '50–70%', '70–85%', '85–100%'],
+          datasets: [
+            {
+              label: 'Predicho (modelo)',
+              data: [2.4, 9.0, 25.3, 38.4, 62.2, None, 98.0],
+              backgroundColor: 'rgba(168, 85, 247, 0.45)',
+              borderColor: '#a855f7',
+              borderWidth: 1.5,
+            },
+            {
+              label: 'Real (resueltas YES/NO)',
+              data: [16.7, 0.0, 16.7, 66.7, 0.0, 0, 100.0],
+              backgroundColor: 'rgba(255, 20, 147, 0.55)',
+              borderColor: '#ff1493',
+              borderWidth: 1.5,
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                afterLabel: function(ctx) {
+                  var n = [6, 3, 6, 3, 2, 0, 5][ctx.dataIndex];
+                  return n != null ? 'muestra: ' + n : '';
+                }
+              }
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true, max: 100,
+              ticks: { callback: function(v) { return v + '%'; } },
+              grid: { color: 'rgba(255,255,255,0.06)' }
+            },
+            x: { grid: { display: false } }
+          }
+        }
+      });
+    })();
+    </script>
   <script>
     (function () {
       var btn = document.getElementById('menuBtn');

@@ -305,8 +305,14 @@
       display: grid; grid-template-columns: 1fr 1fr; gap: 22px;
       max-width: 760px; margin: 36px auto 0;
     }
+    .home-grid.home-grid-3 {
+      grid-template-columns: repeat(3, 1fr); max-width: 980px;
+    }
+    @media (max-width: 900px) {
+      .home-grid.home-grid-3 { grid-template-columns: 1fr 1fr; }
+    }
     @media (max-width: 600px) {
-      .home-grid { grid-template-columns: 1fr; }
+      .home-grid, .home-grid.home-grid-3 { grid-template-columns: 1fr; }
       .home-hero { padding: 40px 16px 22px; }
       .home-hero h1 { font-size: 46px; }
       .home-stats { gap: 24px; }
@@ -356,6 +362,80 @@
       font-size: 20px; color: var(--accent-primary); opacity: 0.5;
       transition: all 0.25s ease;
     }
+    /* --- diagnóstico --- */
+    .diag-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+      margin: 10px 0 18px;
+    }
+    @media (max-width: 700px) { .diag-grid { grid-template-columns: 1fr 1fr; } }
+    .diag-proc {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 12px 14px;
+    }
+    .diag-proc .dp-name {
+      font-size: 12px; font-weight: 600; color: var(--text);
+      display: flex; align-items: center; gap: 7px;
+    }
+    .diag-proc .dp-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+    }
+    .diag-proc.ok    .dp-dot { background: #22c55e; box-shadow: 0 0 8px rgba(34,197,94,0.6); }
+    .diag-proc.warn  .dp-dot { background: #f59e0b; }
+    .diag-proc.muerto .dp-dot { background: #ef4444; }
+    .diag-proc .dp-meta {
+      font-size: 11px; color: var(--text-secondary); margin-top: 6px;
+    }
+    .calib-chart-wrap { position: relative; height: 280px; margin: 14px 0 4px; }
+    .calib-leyenda {
+      display: flex; gap: 18px; justify-content: center; font-size: 11px;
+      color: var(--text-secondary); margin-bottom: 6px;
+    }
+    .calib-leyenda .lg-pill {
+      display: inline-block; width: 10px; height: 10px; border-radius: 2px;
+      margin-right: 5px; vertical-align: middle;
+    }
+    .bucket-row {
+      display: grid; grid-template-columns: 90px 1fr 80px; gap: 12px;
+      align-items: center; padding: 8px 0;
+      border-bottom: 1px solid var(--border-light);
+      font-size: 12px;
+    }
+    .bucket-row:last-child { border-bottom: none; }
+    .bucket-row .br-label { color: var(--text-secondary); font-weight: 500; }
+    .bucket-row .br-bar {
+      position: relative; height: 18px; background: rgba(255,255,255,0.04);
+      border-radius: 4px; overflow: hidden;
+    }
+    .bucket-row .br-fill {
+      position: absolute; top: 0; bottom: 0; left: 50%; /* centro = 0 */
+      transition: width 0.4s ease;
+    }
+    .bucket-row .br-fill.pos {
+      background: linear-gradient(90deg, rgba(34,197,94,0.3), #22c55e);
+    }
+    .bucket-row .br-fill.neg {
+      background: linear-gradient(90deg, #ef4444, rgba(239,68,68,0.3));
+    }
+    .bucket-row .br-val { text-align: right; font-variant-numeric: tabular-nums; }
+    .bucket-row .br-val.pos { color: #22c55e; }
+    .bucket-row .br-val.neg { color: #ef4444; }
+    .rechazo-block {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 16px 18px; margin-bottom: 10px;
+    }
+    .rechazo-block .rb-head {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-bottom: 8px;
+    }
+    .rechazo-block .rb-titulo { font-size: 14px; font-weight: 600; }
+    .rechazo-block .rb-count {
+      font-size: 13px; color: var(--accent-primary); font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
+    .rechazo-block .rb-ejemplos {
+      font-size: 11.5px; color: var(--text-secondary); line-height: 1.6;
+    }
+    .rechazo-block .rb-ejemplos .re-q { color: var(--text); }
     /* --- paginación de tablas (estilo e-commerce) --- */
     .pagination {
       display: flex; justify-content: center; align-items: center; gap: 6px;
@@ -391,6 +471,7 @@
     <a href="index.html" class="active">Inicio</a>
     <a href="panel.html">Panel del bot</a>
     <a href="informes.html">Informes semanales</a>
+    <a href="diagnostico.html">Diagnóstico</a>
   </nav>
   <div class="home-bg"></div>
   <div class="home-hero">
@@ -416,7 +497,7 @@
       </div>
     </div>
   </div>
-  <div class="home-grid">
+  <div class="home-grid home-grid-3">
     <a class="home-card" href="panel.html">
       <div class="hc-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <defs>
@@ -446,7 +527,7 @@
               stroke-linecap="round" stroke-linejoin="round" fill="none"/>
       </svg></div>
       <div class="hc-title">Panel del bot</div>
-      <div class="hc-desc">M&eacute;tricas en vivo, posiciones abiertas y cerradas, P&amp;L, calibraci&oacute;n</div>
+      <div class="hc-desc">M&eacute;tricas en vivo, posiciones abiertas y cerradas, P&amp;L</div>
       <span class="hc-arrow">&rsaquo;</span>
     </a>
     <a class="home-card" href="informes.html">
@@ -469,6 +550,35 @@
       </svg></div>
       <div class="hc-title">Informes semanales</div>
       <div class="hc-desc">Hist&oacute;rico de res&uacute;menes con recomendaciones de estrategia</div>
+      <span class="hc-arrow">&rsaquo;</span>
+    </a>
+    <a class="home-card" href="diagnostico.html">
+      <div class="hc-icon"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="gradDiag" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#38bdf8"/>
+            <stop offset="50%" stop-color="#a855f7"/>
+            <stop offset="100%" stop-color="#ff1493"/>
+          </linearGradient>
+        </defs>
+        <!-- Arco del medidor -->
+        <path d="M10 46 A22 22 0 0 1 54 46" fill="none" stroke="rgba(255,255,255,0.08)"
+              stroke-width="4" stroke-linecap="round"/>
+        <path d="M10 46 A22 22 0 0 1 46 21" fill="none" stroke="url(#gradDiag)"
+              stroke-width="4" stroke-linecap="round"/>
+        <!-- Aguja -->
+        <line x1="32" y1="46" x2="42" y2="24" stroke="url(#gradDiag)"
+              stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="32" cy="46" r="3.5" fill="url(#gradDiag)"/>
+        <!-- Marcas -->
+        <circle cx="10" cy="46" r="1.5" fill="rgba(255,255,255,0.3)"/>
+        <circle cx="20" cy="29" r="1.5" fill="rgba(255,255,255,0.3)"/>
+        <circle cx="32" cy="24" r="1.5" fill="rgba(255,255,255,0.3)"/>
+        <circle cx="44" cy="29" r="1.5" fill="rgba(255,255,255,0.3)"/>
+        <circle cx="54" cy="46" r="1.5" fill="rgba(255,255,255,0.3)"/>
+      </svg></div>
+      <div class="hc-title">Diagn&oacute;stico</div>
+      <div class="hc-desc">Calibraci&oacute;n del modelo, salud de procesos y rechazos del trader</div>
       <span class="hc-arrow">&rsaquo;</span>
     </a>
   </div>
