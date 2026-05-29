@@ -258,6 +258,12 @@
       text-align: center; padding: 70px 20px 30px;
       animation: slideUp 0.5s ease-out;
     }
+    .home-hero.compacto { padding: 30px 20px 22px; }
+    .home-hero.compacto h1 { font-size: 46px; }
+    @media (max-width: 600px) {
+      .home-hero.compacto { padding: 22px 16px 16px; }
+      .home-hero.compacto h1 { font-size: 36px; }
+    }
     .home-badge {
       display: inline-flex; align-items: center; gap: 6px;
       padding: 5px 12px; border-radius: 999px; font-size: 11px;
@@ -362,6 +368,32 @@
       font-size: 20px; color: var(--accent-primary); opacity: 0.5;
       transition: all 0.25s ease;
     }
+    /* --- firma elegante al final de la home --- */
+    .firma-bloque {
+      text-align: center; max-width: 360px; margin: 90px auto 30px;
+      animation: slideUp 0.6s ease-out 0.3s backwards;
+    }
+    .firma-divisor {
+      width: 90px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+      margin: 0 auto 26px;
+    }
+    .firma-svg {
+      width: 200px; height: auto; max-width: 80%;
+      opacity: 0.92;
+      filter: drop-shadow(0 4px 14px rgba(255, 20, 147, 0.18));
+    }
+    .firma-nombre {
+      font-size: 10.5px; font-weight: 600;
+      letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-top: 16px;
+    }
+    .firma-bloque a.firma-nombre-link {
+      color: inherit; text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .firma-bloque a.firma-nombre-link:hover { color: var(--accent-primary); }
     /* --- diagnóstico --- */
     .diag-grid {
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
@@ -473,12 +505,12 @@
     <a href="informes.html">Informes semanales</a>
     <a href="diagnostico.html" class="active">Diagnóstico</a>
   </nav>
+  <div class="home-bg"></div>
   <a class="back-link" href="index.html">&larr; Inicio</a>
-  <div class="header">
+  <div class="home-hero compacto">
     <h1>Diagnóstico</h1>
-    <p class="handle">salud, calibración y rechazos</p>
+    <p class="home-sub">Salud, calibración del modelo y rechazos del trader</p>
   </div>
-  <p class="sub">Visión interna del bot: si el modelo está derivando, qué procesos van bien y qué oportunidades se están descartando.</p>
 
   <div class="section">
     <div class="section-title">Salud de los procesos<span class="count">9/9 OK</span></div>
@@ -487,7 +519,7 @@
       <div class="dp-name"><span class="dp-dot"></span>Trader real</div>
       <div class="dp-meta">
         vivo
-         · últ. 23:27:07
+         · últ. 23:32:08
          · 0.0 min
       </div>
     </div>
@@ -496,23 +528,23 @@
       <div class="dp-meta">
         vivo
          · últ. 23:18:30
-         · 8.6 min
+         · 13.7 min
       </div>
     </div>
     <div class="diag-proc ok">
       <div class="dp-name"><span class="dp-dot"></span>Monitor TP/SL</div>
       <div class="dp-meta">
         vivo
-         · últ. 23:27:06
-         · 0.0 min
+         · últ. 23:27:07
+         · 5.0 min
       </div>
     </div>
     <div class="diag-proc ok">
       <div class="dp-name"><span class="dp-dot"></span>Recolector</div>
       <div class="dp-meta">
         vivo
-         · últ. 23:17:04
-         · 10.1 min
+         · últ. 23:32:05
+         · 0.1 min
       </div>
     </div>
     <div class="diag-proc ok">
@@ -520,14 +552,14 @@
       <div class="dp-meta">
         vivo
          · últ. 23:17:03
-         · 10.1 min
+         · 15.1 min
       </div>
     </div>
     <div class="diag-proc ok">
       <div class="dp-name"><span class="dp-dot"></span>Publicador</div>
       <div class="dp-meta">
         vivo
-         · últ. 23:22:07
+         · últ. 23:27:09
          · 5.0 min
       </div>
     </div>
@@ -536,7 +568,7 @@
       <div class="dp-meta">
         vivo
          · últ. 23:17:03
-         · 10.1 min
+         · 15.1 min
       </div>
     </div>
     <div class="diag-proc ok">
@@ -544,15 +576,15 @@
       <div class="dp-meta">
         vivo
          · últ. 23:17:03
-         · 10.1 min
+         · 15.1 min
       </div>
     </div>
     <div class="diag-proc ok">
       <div class="dp-name"><span class="dp-dot"></span>Paper trader</div>
       <div class="dp-meta">
         vivo
-         · últ. 23:27:04
-         · 0.0 min
+         · últ. 23:32:04
+         · 0.1 min
       </div>
     </div>
     </div>
@@ -632,33 +664,33 @@
 
   <div class="section">
     <div class="section-title">Histórico de rechazos<span class="count">por motivo</span></div>
-    <p class="sub">511 rechazo(s) registrado(s) &middot; agrupados por motivo</p>
+    <p class="sub">517 rechazo(s) registrado(s) &middot; agrupados por motivo</p>
     
     <div class="rechazo-block">
       <div class="rb-head">
         <div class="rb-titulo">Cierre a &gt;3 días</div>
-        <div class="rb-count">266 mercados</div>
+        <div class="rb-count">267 mercados</div>
       </div>
       <div class="rb-ejemplos"><div><span class="re-q">Will the Iran ceasefire continue through May 24?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div><div><span class="re-q">Will Congo DR win the 2026 FIFA World Cup?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div><div><span class="re-q">Roland Garros ATP: Casper Ruud vs Tommy Paul</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div></div>
     </div>
     <div class="rechazo-block">
       <div class="rb-head">
         <div class="rb-titulo">Precio fuera de 0.05–0.95</div>
-        <div class="rb-count">145 mercados</div>
+        <div class="rb-count">146 mercados</div>
       </div>
       <div class="rb-ejemplos"><div><span class="re-q">US x Iran permanent peace deal by May 31, 2026?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div><div><span class="re-q">Will SK Brann win on 2026-05-29?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div><div><span class="re-q">US announces new Iran agreement/ceasefire extension by May 29?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div></div>
     </div>
     <div class="rechazo-block">
       <div class="rb-head">
         <div class="rb-titulo">Edge &lt; 2%</div>
-        <div class="rb-count">58 mercados</div>
+        <div class="rb-count">59 mercados</div>
       </div>
       <div class="rb-ejemplos"><div><span class="re-q">Will Arsenal win the 2025–26 Champions League?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div><div><span class="re-q">Spurs vs. Thunder</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div><div><span class="re-q">Will Paris Saint-Germain FC win on 2026-05-30?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div></div>
     </div>
     <div class="rechazo-block">
       <div class="rb-head">
         <div class="rb-titulo">Liquidez &lt; $10.000</div>
-        <div class="rb-count">28 mercados</div>
+        <div class="rb-count">31 mercados</div>
       </div>
       <div class="rb-ejemplos"><div><span class="re-q">Will Corey Seager win the 2026 American League Hank Aaron Award?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div><div><span class="re-q">Will Ryan Flaherty be the next permanent manager of the Philadelphia Phillies?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div><div><span class="re-q">Tush Push banned for 2026 NFL Season?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div></div>
     </div>

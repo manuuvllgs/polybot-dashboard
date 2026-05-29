@@ -258,6 +258,12 @@
       text-align: center; padding: 70px 20px 30px;
       animation: slideUp 0.5s ease-out;
     }
+    .home-hero.compacto { padding: 30px 20px 22px; }
+    .home-hero.compacto h1 { font-size: 46px; }
+    @media (max-width: 600px) {
+      .home-hero.compacto { padding: 22px 16px 16px; }
+      .home-hero.compacto h1 { font-size: 36px; }
+    }
     .home-badge {
       display: inline-flex; align-items: center; gap: 6px;
       padding: 5px 12px; border-radius: 999px; font-size: 11px;
@@ -362,6 +368,32 @@
       font-size: 20px; color: var(--accent-primary); opacity: 0.5;
       transition: all 0.25s ease;
     }
+    /* --- firma elegante al final de la home --- */
+    .firma-bloque {
+      text-align: center; max-width: 360px; margin: 90px auto 30px;
+      animation: slideUp 0.6s ease-out 0.3s backwards;
+    }
+    .firma-divisor {
+      width: 90px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+      margin: 0 auto 26px;
+    }
+    .firma-svg {
+      width: 200px; height: auto; max-width: 80%;
+      opacity: 0.92;
+      filter: drop-shadow(0 4px 14px rgba(255, 20, 147, 0.18));
+    }
+    .firma-nombre {
+      font-size: 10.5px; font-weight: 600;
+      letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-top: 16px;
+    }
+    .firma-bloque a.firma-nombre-link {
+      color: inherit; text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .firma-bloque a.firma-nombre-link:hover { color: var(--accent-primary); }
     /* --- diagnóstico --- */
     .diag-grid {
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
@@ -473,12 +505,12 @@
     <a href="informes.html" class="active">Informes semanales</a>
     <a href="diagnostico.html">Diagnóstico</a>
   </nav>
+  <div class="home-bg"></div>
   <a class="back-link" href="informes.html">&larr; Informes semanales</a>
-  <div class="header">
+  <div class="home-hero compacto">
     <h1>Informe</h1>
-    <p class="handle">semana 2026-W22</p>
+    <p class="home-sub">Semana 2026-W22 &middot; generado el 2026-05-25 09:41</p>
   </div>
-  <p class="sub">Generado el 2026-05-25 09:41</p>
   <div class="section">
     <pre class="informe-pre">RESUMEN SEMANAL — 2026-05-25 09:41
 
