@@ -466,11 +466,12 @@
 </style>
 </head>
 <body>
-  <div class="header">
+  <div class="home-bg"></div>
+  <div class="home-hero">
+    <div class="home-badge"><span class="dot"></span> Sistema activo</div>
     <h1>Polybot</h1>
-    <p class="handle">manuuvllgs</p>
+    <p class="home-sub">Panel del bot &middot; actualizado 2026-05-29 23:22 &middot; auto-refresh cada 5 min</p>
   </div>
-  <p class="sub">Actualizado 2026-05-29 23:17 · Auto-refresh cada 5 min</p>
   <div class="grid">
     <div class="card balance-card"><div class="card-label">Saldo</div>
       <div class="balance-row">
@@ -484,41 +485,41 @@
         <button class="balance-button secondary" id="saldoCancelBtn" type="button">Cancelar</button>
       </form></div>
     <div class="card"><div class="card-label">P&L Total</div>
-      <div class="card-value green">$+7.15</div>
-      <div class="card-sub">32 operaciones cerradas</div></div>
+      <div class="card-value red">$-6.74</div>
+      <div class="card-sub">34 operaciones cerradas</div></div>
     <div class="card"><div class="card-label">P&L Hoy</div>
-      <div class="card-value green">$+14.57</div>
+      <div class="card-value green">$+0.68</div>
       <div class="card-sub">Desde las 00:00</div></div>
     <div class="card"><div class="card-label">P&L 7 Días</div>
-      <div class="card-value green">$+7.12</div>
+      <div class="card-value red">$-6.76</div>
       <div class="card-sub">Última semana</div></div>
     <div class="card"><div class="card-label">Operaciones</div>
       <div class="card-value">41</div>
-      <div class="card-sub">9 abiertas · 32 cerradas</div></div>
+      <div class="card-sub">7 abiertas · 34 cerradas</div></div>
     <div class="card"><div class="card-label">Win Rate</div>
-      <div class="card-value green">69%</div>
-      <div class="card-sub">32 operaciones</div></div>
+      <div class="card-value green">68%</div>
+      <div class="card-sub">34 operaciones</div></div>
     <div class="card"><div class="card-label">Invertido</div>
-      <div class="card-value cyan">$90.00</div>
+      <div class="card-value cyan">$65.00</div>
       <div class="card-sub">En posiciones abiertas</div></div>
     <div class="card"><div class="card-label">Ganancia Media</div>
-      <div class="card-value green">$+0.22</div>
+      <div class="card-value red">$-0.20</div>
       <div class="card-sub">Por operación</div></div>
     <div class="card"><div class="card-label">ROI Total</div>
-      <div class="card-value green">+3.3%</div>
-      <div class="card-sub">$215.00 invertidos</div></div>
+      <div class="card-value red">-2.8%</div>
+      <div class="card-sub">$240.00 invertidos</div></div>
     <div class="card"><div class="card-label">ROI 7D</div>
-      <div class="card-value green">+3.4%</div>
+      <div class="card-value red">-2.9%</div>
       <div class="card-sub">Últimos 7 días</div></div>
   </div>
 
   <div class="section">
-    <div class="section-title">P&L Acumulado (USD)<span class="count">32 ops cerradas</span></div>
+    <div class="section-title">P&L Acumulado (USD)<span class="count">34 ops cerradas</span></div>
     <canvas id='pnlChart' height='200'></canvas>
   </div>
 
   <div class="section">
-    <div class="section-title">Posiciones Abiertas<span class="count">9 · $90.00</span></div>
+    <div class="section-title">Posiciones Abiertas<span class="count">7 · $65.00</span></div>
     
     <table>
       <thead><tr><th>Abierta</th><th>Mercado</th><th>Dir</th><th>Precio</th><th>Size</th><th>Edge</th><th>Cierra</th></tr></thead>
@@ -542,15 +543,6 @@
           <td class="muted">2026-06-01</td>
         </tr>
         <tr>
-          <td class="muted">2026-05-29 08:59</td>
-          <td>Will Russia capture all of Hryshyne by May 31?</td>
-          <td>YES</td>
-          <td class="num">90.0%</td>
-          <td class="num">$10.00</td>
-          <td class="num blue">+4.8%</td>
-          <td class="muted">2026-05-31</td>
-        </tr>
-        <tr>
           <td class="muted">2026-05-29 07:49</td>
           <td>Will Nithya Raman win the 2026 Los Angeles mayoral election?</td>
           <td>YES</td>
@@ -558,15 +550,6 @@
           <td class="num">$10.00</td>
           <td class="num blue">+4.0%</td>
           <td class="muted">2026-06-02</td>
-        </tr>
-        <tr>
-          <td class="muted">2026-05-29 07:49</td>
-          <td>Will WTI Crude Oil (WTI) hit (LOW) $85 in May?</td>
-          <td>YES</td>
-          <td class="num">45.0%</td>
-          <td class="num">$15.00</td>
-          <td class="num blue">+5.2%</td>
-          <td class="muted">2026-06-01</td>
         </tr>
         <tr>
           <td class="muted">2026-05-28 09:36</td>
@@ -608,12 +591,28 @@
   </div>
 
   <div class="section">
-    <div class="section-title">Historial Reciente<span class="count">32 ops cerradas</span></div>
+    <div class="section-title">Historial Reciente<span class="count">34 ops cerradas</span></div>
     
     <div class="paginated" data-page-size="10">
       <table>
         <thead><tr><th>Fecha</th><th>Mercado</th><th>Dir</th><th>Size</th><th>Cierre</th><th>P&L</th></tr></thead>
         <tbody>
+        <tr>
+          <td class="muted">2026-05-29 08:59</td>
+          <td>Will Russia capture all of Hryshyne by May 31?</td>
+          <td>YES</td>
+          <td class="num">$10.00</td>
+          <td>✅ YES</td>
+          <td class="num green">+1.11 $</td>
+        </tr>
+        <tr>
+          <td class="muted">2026-05-29 07:49</td>
+          <td>Will WTI Crude Oil (WTI) hit (LOW) $85 in May?</td>
+          <td>YES</td>
+          <td class="num">$15.00</td>
+          <td>❌ NO</td>
+          <td class="num red">-15.00 $</td>
+        </tr>
         <tr>
           <td class="muted">2026-05-27 01:01</td>
           <td>Will Elon Musk post 180-199 tweets from May 22 to May 29, 20</td>
@@ -1097,9 +1096,9 @@
     new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ["#1", "#2", "#3", "#4", "#5", "#6", "#7", "#8", "#9", "#10", "#11", "#12", "#13", "#14", "#15", "#16", "#17", "#18", "#19", "#20", "#21", "#22", "#23", "#24", "#25", "#26", "#27", "#28", "#29", "#30", "#31", "#32"],
+        labels: ["#1", "#2", "#3", "#4", "#5", "#6", "#7", "#8", "#9", "#10", "#11", "#12", "#13", "#14", "#15", "#16", "#17", "#18", "#19", "#20", "#21", "#22", "#23", "#24", "#25", "#26", "#27", "#28", "#29", "#30", "#31", "#32", "#33", "#34"],
         datasets: [{
-          label: 'P&L $', data: [0.0275, -4.9725, -4.892, -9.892, 15.2285, 10.2285, 10.2555, 20.4745, 15.4745, 16.357, 17.468, 12.468, 13.3015, 13.5645, 14.3175, 14.5805, 15.6945, 10.6945, 5.6945, 5.9575, 6.2205, 1.2205, -3.7795, -13.7795, -13.0265, -11.6625, -10.8485, 0.599, 4.349, 5.034, 6.888, 7.151],
+          label: 'P&L $', data: [0.0275, -4.9725, -4.892, -9.892, 15.2285, 10.2285, 10.2555, 20.4745, 15.4745, 16.357, 17.468, 12.468, 13.3015, 13.5645, 14.3175, 14.5805, 15.6945, 10.6945, 5.6945, 5.9575, 6.2205, 1.2205, -3.7795, -13.7795, -13.0265, -11.6625, -10.8485, 0.599, 4.349, 5.034, 6.888, 7.151, -7.849, -6.738],
           borderColor: '#ff1493', backgroundColor: 'rgba(255, 20, 147, 0.08)',
           borderWidth: 2, pointRadius: 3, pointBackgroundColor: '#ff1493',
           pointBorderColor: '#ffffff', pointBorderWidth: 1, fill: true,
