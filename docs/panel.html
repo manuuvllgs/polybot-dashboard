@@ -490,7 +490,7 @@
   <div class="home-hero">
     <div class="home-badge"><span class="dot"></span> Sistema activo</div>
     <h1>Polybot</h1>
-    <p class="home-sub">Panel del bot &middot; actualizado 2026-06-08 16:31 &middot; auto-refresh cada 5 min</p>
+    <p class="home-sub">Panel del bot &middot; actualizado 2026-06-08 16:36 &middot; auto-refresh cada 5 min</p>
   </div>
   <div class="grid">
     <div class="card balance-card"><div class="card-label">Saldo</div>
@@ -514,13 +514,13 @@
       <div class="card-value green">$+12.98</div>
       <div class="card-sub">Última semana</div></div>
     <div class="card"><div class="card-label">Operaciones</div>
-      <div class="card-value">52</div>
-      <div class="card-sub">0 abiertas · 52 cerradas</div></div>
+      <div class="card-value">53</div>
+      <div class="card-sub">1 abiertas · 52 cerradas</div></div>
     <div class="card"><div class="card-label">Win Rate</div>
       <div class="card-value green">71%</div>
       <div class="card-sub">52 operaciones</div></div>
     <div class="card"><div class="card-label">Invertido</div>
-      <div class="card-value cyan">$0.00</div>
+      <div class="card-value cyan">$5.00</div>
       <div class="card-sub">En posiciones abiertas</div></div>
     <div class="card"><div class="card-label">Ganancia Media</div>
       <div class="card-value red">$-0.30</div>
@@ -539,8 +539,21 @@
   </div>
 
   <div class="section">
-    <div class="section-title">Posiciones Abiertas<span class="count">0 · $0.00</span></div>
-    <p class="empty">No hay operaciones abiertas.</p>
+    <div class="section-title">Posiciones Abiertas<span class="count">1 · $5.00</span></div>
+    
+    <table>
+      <thead><tr><th>Abierta</th><th>Mercado</th><th>Dir</th><th>Precio</th><th>Size</th><th>Edge</th><th>Cierra</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="muted">2026-06-08 16:31</td>
+          <td>Will the price of Bitcoin be above $58,000 on June 12?</td>
+          <td>YES</td>
+          <td class="num">94.0%</td>
+          <td class="num">$5.00</td>
+          <td class="num blue">+2.2%</td>
+          <td class="muted">2026-06-12</td>
+        </tr></tbody>
+    </table>
   </div>
 
   <div class="section">
@@ -1019,7 +1032,7 @@
 
   <p class="footer">polybot · self-hosted</p>
   <script>
-    const SALDO_REAL = "$76.22";
+    const SALDO_REAL = "$71.21";
     const SALDO_PASSWORD_HASH = "1fcb68ecb837c53ed5eac1992edbbcddeac07587120e9e4a6f373da0f7ae2e81";
 
     async function sha256(text) {
