@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Diagnóstico — Polybot</title>
+  <title>Informe 2026-W25 — Polybot</title>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -490,290 +490,40 @@
     <div class="menu-head">Polybot</div>
     <a href="index.html">Inicio</a>
     <a href="panel.html">Panel del bot</a>
-    <a href="informes.html">Informes semanales</a>
-    <a href="diagnostico.html" class="active">Diagnóstico</a>
+    <a href="informes.html" class="active">Informes semanales</a>
+    <a href="diagnostico.html">Diagnóstico</a>
   </nav>
   <div class="home-bg"></div>
-  <a class="back-link" href="index.html">&larr; Inicio</a>
+  <a class="back-link" href="informes.html">&larr; Informes semanales</a>
   <div class="home-hero compacto">
-    <h1>Diagnóstico</h1>
-    <p class="home-sub">Salud, calibración del modelo y rechazos del trader</p>
+    <h1>Informe</h1>
+    <p class="home-sub">Semana 2026-W25 &middot; generado el 2026-06-15 15:40</p>
   </div>
-
   <div class="section">
-    <div class="section-title">Salud de los procesos<span class="count">9/9 OK</span></div>
-    <div class="diag-grid">
-    <div class="diag-proc ok">
-      <div class="dp-name"><span class="dp-dot"></span>Trader real</div>
-      <div class="dp-meta">
-        vivo
-         · últ. 15:40:37
-         · 0.0 min
-      </div>
-    </div>
-    <div class="diag-proc ok">
-      <div class="dp-name"><span class="dp-dot"></span>Evaluador</div>
-      <div class="dp-meta">
-        vivo
-         · últ. 15:40:37
-         · 0.0 min
-      </div>
-    </div>
-    <div class="diag-proc ok">
-      <div class="dp-name"><span class="dp-dot"></span>Monitor TP/SL</div>
-      <div class="dp-meta">
-        vivo
-         · últ. 15:40:37
-         · 0.0 min
-      </div>
-    </div>
-    <div class="diag-proc ok">
-      <div class="dp-name"><span class="dp-dot"></span>Recolector</div>
-      <div class="dp-meta">
-        vivo
-         · últ. 15:40:37
-         · 0.0 min
-      </div>
-    </div>
-    <div class="diag-proc ok">
-      <div class="dp-name"><span class="dp-dot"></span>Telegram bot</div>
-      <div class="dp-meta">
-        vivo
-         · últ. 15:40:37
-         · 0.0 min
-      </div>
-    </div>
-    <div class="diag-proc ok">
-      <div class="dp-name"><span class="dp-dot"></span>Publicador</div>
-      <div class="dp-meta">
-        vivo
-         · últ. 15:40:37
-         · 0.0 min
-      </div>
-    </div>
-    <div class="diag-proc ok">
-      <div class="dp-name"><span class="dp-dot"></span>Resumen semanal</div>
-      <div class="dp-meta">
-        vivo
-         · últ. 15:40:37
-         · 0.0 min
-      </div>
-    </div>
-    <div class="diag-proc ok">
-      <div class="dp-name"><span class="dp-dot"></span>Mantenimiento</div>
-      <div class="dp-meta">
-        vivo
-         · últ. 15:40:37
-         · 0.0 min
-      </div>
-    </div>
-    <div class="diag-proc ok">
-      <div class="dp-name"><span class="dp-dot"></span>Paper trader</div>
-      <div class="dp-meta">
-        vivo
-         · últ. 15:40:37
-         · 0.0 min
-      </div>
-    </div>
-    </div>
-  </div>
+    <pre class="informe-pre">RESUMEN SEMANAL — 2026-06-15 15:40
 
-  <div class="section">
-    <div class="section-title">Calibración del modelo<span class="count">42 resueltas YES/NO</span></div>
-    <p class="sub">Por bucket de prob_estimada: lo que el modelo predijo de media frente a la frecuencia real con la que ocurrió YES. Cuanto más se acerquen los pares de barras, mejor calibrado.</p>
-    <div class="calib-leyenda">
-      <span><span class="lg-pill" style="background:#a855f7"></span>Predicho</span>
-      <span><span class="lg-pill" style="background:#ff1493"></span>Real</span>
-    </div>
-    <div class="calib-chart-wrap"><canvas id="calibChart"></canvas></div>
-  </div>
+Desde el resumen anterior (2026-06-08 10:05): 2 operación(es) cerradas, P&amp;L $+9.98
 
-  <div class="section">
-    <div class="section-title">P&amp;L por bucket de precio pagado<span class="count">53 ops cerradas</span></div>
-    <p class="sub">Dónde gana y dónde pierde el bot según el precio efectivo de compra.</p>
-    
-        <div class="bucket-row">
-          <div class="br-label"><0.30 <span style="color:var(--text-secondary);font-size:10px">(n=9, win 11%)</span></div>
-          <div class="br-bar"><div class="br-fill neg" style="right: 50%; left: auto; width: 35.4%"></div></div>
-          <div class="br-val neg">$-19.88</div>
-        </div>
-        <div class="bucket-row">
-          <div class="br-label">0.30–0.60 <span style="color:var(--text-secondary);font-size:10px">(n=9, win 44%)</span></div>
-          <div class="br-bar"><div class="br-fill neg" style="right: 50%; left: auto; width: 15.8%"></div></div>
-          <div class="br-val neg">$-8.89</div>
-        </div>
-        <div class="bucket-row">
-          <div class="br-label">0.60–0.85 <span style="color:var(--text-secondary);font-size:10px">(n=3, win 66%)</span></div>
-          <div class="br-bar"><div class="br-fill neg" style="right: 50%; left: auto; width: 26.2%"></div></div>
-          <div class="br-val neg">$-14.75</div>
-        </div>
-        <div class="bucket-row">
-          <div class="br-label">≥0.85 <span style="color:var(--text-secondary);font-size:10px">(n=32, win 96%)</span></div>
-          <div class="br-bar"><div class="br-fill pos" style="left: 50%; width: 50%"></div></div>
-          <div class="br-val pos">$+28.11</div>
-        </div>
-  </div>
+Acumulado: 53 operaciones cerradas
+  P&amp;L total:  $-15.41   (ROI -3.9% sobre $395)
+  Win rate:   72%  (38/53 en verde, pero solo 24 son ganancias relevantes; 14 son cierres mínimos)
+  Abiertas:   0 posiciones, $0.00 en juego (sin resolver)
 
-  <div class="section">
-    <div class="section-title">Aciertos por bucket de prob_estimada<span class="count">con IC Wilson 95%</span></div>
-    <p class="sub">Tasa real de aciertos con intervalo de confianza. Si el intervalo cruza 50% el modelo no distingue de azar en ese bucket.</p>
-    
-        <div class="bucket-row">
-          <div class="br-label">0–5% <span style="color:var(--text-secondary);font-size:10px">(n=16)</span></div>
-          <div class="br-bar"><div class="br-fill pos" style="left:0;width:93.8%"></div></div>
-          <div class="br-val">93% <span style="color:var(--text-secondary);font-size:10px">[71–98]</span></div>
-        </div>
-        <div class="bucket-row">
-          <div class="br-label">5–15% <span style="color:var(--text-secondary);font-size:10px">(n=4)</span></div>
-          <div class="br-bar"><div class="br-fill pos" style="left:0;width:100.0%"></div></div>
-          <div class="br-val">100% <span style="color:var(--text-secondary);font-size:10px">[51–100]</span></div>
-        </div>
-        <div class="bucket-row">
-          <div class="br-label">15–30% <span style="color:var(--text-secondary);font-size:10px">(n=10)</span></div>
-          <div class="br-bar"><div class="br-fill pos" style="left:0;width:40.0%"></div></div>
-          <div class="br-val">40% <span style="color:var(--text-secondary);font-size:10px">[16–68]</span></div>
-        </div>
-        <div class="bucket-row">
-          <div class="br-label">30–50% <span style="color:var(--text-secondary);font-size:10px">(n=6)</span></div>
-          <div class="br-bar"><div class="br-fill pos" style="left:0;width:50.0%"></div></div>
-          <div class="br-val">50% <span style="color:var(--text-secondary);font-size:10px">[18–81]</span></div>
-        </div>
-        <div class="bucket-row">
-          <div class="br-label">50–70% <span style="color:var(--text-secondary);font-size:10px">(n=6)</span></div>
-          <div class="br-bar"><div class="br-fill pos" style="left:0;width:33.3%"></div></div>
-          <div class="br-val">33% <span style="color:var(--text-secondary);font-size:10px">[9–70]</span></div>
-        </div>
-        <div class="bucket-row">
-          <div class="br-label">85–100% <span style="color:var(--text-secondary);font-size:10px">(n=11)</span></div>
-          <div class="br-bar"><div class="br-fill pos" style="left:0;width:90.9%"></div></div>
-          <div class="br-val">90% <span style="color:var(--text-secondary);font-size:10px">[62–98]</span></div>
-        </div>
-  </div>
+Concentración del beneficio:
+  P&amp;L total:          $-15.41
+  sin la mejor op:    $-40.53
+  sin las 2 mejores:  $-51.97
+  Conclusión: Aún hay muy pocos datos para juzgar la concentración.
 
-  <div class="section">
-    <div class="section-title">Histórico de rechazos<span class="count">por motivo</span></div>
-    <p class="sub">4632 rechazo(s) registrado(s) &middot; agrupados por motivo</p>
-    
-    <div class="rechazo-block">
-      <div class="rb-head">
-        <div class="rb-titulo">Precio fuera de 0.05–0.95</div>
-        <div class="rb-count">1668 mercados</div>
-      </div>
-      <div class="rb-ejemplos"><div><span class="re-q">US x Iran permanent peace deal by May 31, 2026?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div><div><span class="re-q">Will SK Brann win on 2026-05-29?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div><div><span class="re-q">US announces new Iran agreement/ceasefire extension by May 29?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div></div>
-    </div>
-    <div class="rechazo-block">
-      <div class="rb-head">
-        <div class="rb-titulo">Cierre a &gt;3 días</div>
-        <div class="rb-count">1446 mercados</div>
-      </div>
-      <div class="rb-ejemplos"><div><span class="re-q">Will the Iran ceasefire continue through May 24?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div><div><span class="re-q">Will Congo DR win the 2026 FIFA World Cup?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div><div><span class="re-q">Roland Garros ATP: Casper Ruud vs Tommy Paul</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div></div>
-    </div>
-    <div class="rechazo-block">
-      <div class="rb-head">
-        <div class="rb-titulo">Edge &lt; 2%</div>
-        <div class="rb-count">917 mercados</div>
-      </div>
-      <div class="rb-ejemplos"><div><span class="re-q">Will Arsenal win the 2025–26 Champions League?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div><div><span class="re-q">Spurs vs. Thunder</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div><div><span class="re-q">Will Paris Saint-Germain FC win on 2026-05-30?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div></div>
-    </div>
-    <div class="rechazo-block">
-      <div class="rb-head">
-        <div class="rb-titulo">Liquidez &lt; $10.000</div>
-        <div class="rb-count">533 mercados</div>
-      </div>
-      <div class="rb-ejemplos"><div><span class="re-q">Will Corey Seager win the 2026 American League Hank Aaron Award?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div><div><span class="re-q">Will Ryan Flaherty be the next permanent manager of the Philadelphia Phillies?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div><div><span class="re-q">Tush Push banned for 2026 NFL Season?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div></div>
-    </div>
-    <div class="rechazo-block">
-      <div class="rb-head">
-        <div class="rb-titulo">Comparte tema con abierta</div>
-        <div class="rb-count">34 mercados</div>
-      </div>
-      <div class="rb-ejemplos"><div><span class="re-q">Will Bitcoin dip to $72,500 in May?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div><div><span class="re-q">Will &quot;Backrooms&quot; Opening Weekend Box Office be greater than 79m?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div><div><span class="re-q">Israel x Lebanon diplomatic meeting by May 31?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div></div>
-    </div>
-    <div class="rechazo-block">
-      <div class="rb-head">
-        <div class="rb-titulo">Posición ya operada antes</div>
-        <div class="rb-count">29 mercados</div>
-      </div>
-      <div class="rb-ejemplos"><div><span class="re-q">Will Donald Trump announce that the United States blockade of the Strait of Horm</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div><div><span class="re-q">Iran closes its airspace by May 27?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div><div><span class="re-q">Will WTI Crude Oil (WTI) hit (LOW) $85 in May?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div></div>
-    </div>
-    <div class="rechazo-block">
-      <div class="rb-head">
-        <div class="rb-titulo">sesgo_calibracion_15_30</div>
-        <div class="rb-count">4 mercados</div>
-      </div>
-      <div class="rb-ejemplos"><div><span class="re-q">Will Elon Musk post 200-219 tweets from May 29 to June 5, 2026?</span> <span style="color:var(--text-secondary)">(2026-06-02 17:01)</span></div><div><span class="re-q">Will Elon Musk post 200-219 tweets from May 29 to June 5, 2026?</span> <span style="color:var(--text-secondary)">(2026-06-02 17:01)</span></div><div><span class="re-q">Will Jakub Mensik win the 2026 Men&#x27;s French Open?</span> <span style="color:var(--text-secondary)">(2026-06-03 03:10)</span></div></div>
-    </div>
-    <div class="rechazo-block">
-      <div class="rb-head">
-        <div class="rb-titulo">modo_solo_extremos</div>
-        <div class="rb-count">1 mercados</div>
-      </div>
-      <div class="rb-ejemplos"><div><span class="re-q">Will Elon Musk post 160-179 tweets from June 9 to June 16, 2026?</span> <span style="color:var(--text-secondary)">(2026-06-14 22:49)</span></div></div>
-    </div>
-  </div>
+Muestra: 53 de ~45 operaciones cerradas.
 
+RECOMENDACIÓN — qué estrategia seguir
+  &gt;&gt; MANTENER EL PERFIL CONSERVADOR. No meter más dinero ni subir la agresividad todavía.
+  Motivo: el P&amp;L acumulado es negativo ($-15.41). No hay nada que justifique arriesgar más; lo que toca es revisar el modelo, no subir el tamaño.
+
+(Orientación basada en los datos, no asesoramiento financiero; la decisión es tuya.)</pre>
+  </div>
   <p class="footer">polybot &middot; self-hosted</p>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-  <script>
-    (function() {
-      var ctx = document.getElementById('calibChart');
-      if (!ctx) return;
-      function pintar() {
-        if (typeof Chart === 'undefined') {
-          setTimeout(pintar, 200);
-          return;
-        }
-        Chart.defaults.color = '#9ca3af';
-        Chart.defaults.font.family = "'JetBrains Mono', monospace";
-        new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: ["0–5%", "5–15%", "15–30%", "30–50%", "50–70%", "70–85%", "85–100%"],
-            datasets: [
-              {
-                label: 'Predicho (modelo)',
-                data: [1.9, 9.0, 24.7, 38.0, 59.2, null, 96.6],
-                backgroundColor: 'rgba(168, 85, 247, 0.45)',
-                borderColor: '#a855f7',
-                borderWidth: 1.5,
-              },
-              {
-                label: 'Real (resueltas YES/NO)',
-                data: [10.0, 0.0, 12.5, 40.0, 20.0, 0, 90.9],
-                backgroundColor: 'rgba(255, 20, 147, 0.55)',
-                borderColor: '#ff1493',
-                borderWidth: 1.5,
-              }
-            ]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-              legend: { display: false },
-              tooltip: {
-                callbacks: {
-                  afterLabel: function(ctx) {
-                    var n = [10, 3, 8, 5, 5, 0, 11][ctx.dataIndex];
-                    return n != null ? 'muestra: ' + n : '';
-                  }
-                }
-              }
-            },
-            scales: {
-              y: {
-                beginAtZero: true, max: 100,
-                ticks: { callback: function(v) { return v + '%'; } },
-                grid: { color: 'rgba(255,255,255,0.06)' }
-              },
-              x: { grid: { display: false } }
-            }
-          }
-        });
-      }
-      pintar();
-    })();
-    </script>
   <script>
     (function () {
       var btn = document.getElementById('menuBtn');
