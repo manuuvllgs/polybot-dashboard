@@ -501,30 +501,30 @@
   </div>
 
   <div class="section">
-    <div class="section-title">Salud de los procesos<span class="count">5/9 OK</span></div>
+    <div class="section-title">Salud de los procesos<span class="count">6/9 OK</span></div>
     <div class="diag-grid">
     <div class="diag-proc ok">
       <div class="dp-name"><span class="dp-dot"></span>Trader real</div>
       <div class="dp-meta">
         vivo
-         · últ. 16:28:27
+         · últ. 16:33:28
          · 0.5 min
       </div>
     </div>
-    <div class="diag-proc warn">
+    <div class="diag-proc ok">
       <div class="dp-name"><span class="dp-dot"></span>Evaluador</div>
       <div class="dp-meta">
         vivo
-         · últ. 00:19:22
-         · 3849.6 min
+         · últ. 16:32:33
+         · 1.4 min
       </div>
     </div>
     <div class="diag-proc ok">
       <div class="dp-name"><span class="dp-dot"></span>Monitor TP/SL</div>
       <div class="dp-meta">
         vivo
-         · últ. 16:22:30
-         · 6.4 min
+         · últ. 16:32:30
+         · 1.5 min
       </div>
     </div>
     <div class="diag-proc ok">
@@ -532,7 +532,7 @@
       <div class="dp-meta">
         vivo
          · últ. 16:22:54
-         · 6.0 min
+         · 11.1 min
       </div>
     </div>
     <div class="diag-proc warn">
@@ -540,14 +540,14 @@
       <div class="dp-meta">
         vivo
          · últ. 15:41:28
-         · 10127.5 min
+         · 10132.5 min
       </div>
     </div>
     <div class="diag-proc ok">
       <div class="dp-name"><span class="dp-dot"></span>Publicador</div>
       <div class="dp-meta">
         vivo
-         · últ. 16:23:56
+         · últ. 16:28:58
          · 5.0 min
       </div>
     </div>
@@ -556,7 +556,7 @@
       <div class="dp-meta">
         vivo
          · últ. 11:59:02
-         · 269.9 min
+         · 274.9 min
       </div>
     </div>
     <div class="diag-proc warn">
@@ -564,14 +564,14 @@
       <div class="dp-meta">
         vivo
          · últ. 12:08:34
-         · 260.4 min
+         · 265.4 min
       </div>
     </div>
     <div class="diag-proc ok">
       <div class="dp-name"><span class="dp-dot"></span>Paper trader</div>
       <div class="dp-meta">
         vivo
-         · últ. 16:28:19
+         · últ. 16:33:20
          · 0.6 min
       </div>
     </div>
@@ -579,7 +579,7 @@
   </div>
 
   <div class="section">
-    <div class="section-title">Calibración del modelo<span class="count">50 resueltas YES/NO</span></div>
+    <div class="section-title">Calibración del modelo<span class="count">54 resueltas YES/NO</span></div>
     <p class="sub">Por bucket de prob_estimada: lo que el modelo predijo de media frente a la frecuencia real con la que ocurrió YES. Cuanto más se acerquen los pares de barras, mejor calibrado.</p>
     <div class="calib-leyenda">
       <span><span class="lg-pill" style="background:#a855f7"></span>Predicho</span>
@@ -589,7 +589,7 @@
   </div>
 
   <div class="section">
-    <div class="section-title">P&amp;L por bucket de precio pagado<span class="count">61 ops cerradas</span></div>
+    <div class="section-title">P&amp;L por bucket de precio pagado<span class="count">65 ops cerradas</span></div>
     <p class="sub">Dónde gana y dónde pierde el bot según el precio efectivo de compra.</p>
     
         <div class="bucket-row">
@@ -608,9 +608,9 @@
           <div class="br-val neg">$-14.75</div>
         </div>
         <div class="bucket-row">
-          <div class="br-label">≥0.85 <span style="color:var(--text-secondary);font-size:10px">(n=40, win 95%)</span></div>
-          <div class="br-bar"><div class="br-fill pos" style="left: 50%; width: 31.3%"></div></div>
-          <div class="br-val pos">$+12.46</div>
+          <div class="br-label">≥0.85 <span style="color:var(--text-secondary);font-size:10px">(n=44, win 93%)</span></div>
+          <div class="br-bar"><div class="br-fill neg" style="right: 50%; left: auto; width: 2.7%"></div></div>
+          <div class="br-val neg">$-1.07</div>
         </div>
   </div>
 
@@ -619,14 +619,14 @@
     <p class="sub">Tasa real de aciertos con intervalo de confianza. Si el intervalo cruza 50% el modelo no distingue de azar en ese bucket.</p>
     
         <div class="bucket-row">
-          <div class="br-label">0–5% <span style="color:var(--text-secondary);font-size:10px">(n=20)</span></div>
-          <div class="br-bar"><div class="br-fill pos" style="left:0;width:95.0%"></div></div>
-          <div class="br-val">95% <span style="color:var(--text-secondary);font-size:10px">[76–99]</span></div>
+          <div class="br-label">0–5% <span style="color:var(--text-secondary);font-size:10px">(n=22)</span></div>
+          <div class="br-bar"><div class="br-fill pos" style="left:0;width:90.9%"></div></div>
+          <div class="br-val">90% <span style="color:var(--text-secondary);font-size:10px">[72–97]</span></div>
         </div>
         <div class="bucket-row">
-          <div class="br-label">5–15% <span style="color:var(--text-secondary);font-size:10px">(n=6)</span></div>
+          <div class="br-label">5–15% <span style="color:var(--text-secondary);font-size:10px">(n=7)</span></div>
           <div class="br-bar"><div class="br-fill pos" style="left:0;width:100.0%"></div></div>
-          <div class="br-val">100% <span style="color:var(--text-secondary);font-size:10px">[60–100]</span></div>
+          <div class="br-val">100% <span style="color:var(--text-secondary);font-size:10px">[64–100]</span></div>
         </div>
         <div class="bucket-row">
           <div class="br-label">15–30% <span style="color:var(--text-secondary);font-size:10px">(n=10)</span></div>
@@ -644,20 +644,20 @@
           <div class="br-val">33% <span style="color:var(--text-secondary);font-size:10px">[9–70]</span></div>
         </div>
         <div class="bucket-row">
-          <div class="br-label">85–100% <span style="color:var(--text-secondary);font-size:10px">(n=13)</span></div>
-          <div class="br-bar"><div class="br-fill pos" style="left:0;width:84.6%"></div></div>
-          <div class="br-val">84% <span style="color:var(--text-secondary);font-size:10px">[57–95]</span></div>
+          <div class="br-label">85–100% <span style="color:var(--text-secondary);font-size:10px">(n=14)</span></div>
+          <div class="br-bar"><div class="br-fill pos" style="left:0;width:85.7%"></div></div>
+          <div class="br-val">85% <span style="color:var(--text-secondary);font-size:10px">[60–95]</span></div>
         </div>
   </div>
 
   <div class="section">
     <div class="section-title">Histórico de rechazos<span class="count">por motivo</span></div>
-    <p class="sub">9114 rechazo(s) registrado(s) &middot; agrupados por motivo</p>
+    <p class="sub">9119 rechazo(s) registrado(s) &middot; agrupados por motivo</p>
     
     <div class="rechazo-block">
       <div class="rb-head">
         <div class="rb-titulo">Precio fuera de 0.05–0.95</div>
-        <div class="rb-count">3261 mercados</div>
+        <div class="rb-count">3264 mercados</div>
       </div>
       <div class="rb-ejemplos"><div><span class="re-q">US x Iran permanent peace deal by May 31, 2026?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div><div><span class="re-q">Will SK Brann win on 2026-05-29?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div><div><span class="re-q">US announces new Iran agreement/ceasefire extension by May 29?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div></div>
     </div>
@@ -671,7 +671,7 @@
     <div class="rechazo-block">
       <div class="rb-head">
         <div class="rb-titulo">Edge &lt; 2%</div>
-        <div class="rb-count">2084 mercados</div>
+        <div class="rb-count">2086 mercados</div>
       </div>
       <div class="rb-ejemplos"><div><span class="re-q">Will Arsenal win the 2025–26 Champions League?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div><div><span class="re-q">Spurs vs. Thunder</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div><div><span class="re-q">Will Paris Saint-Germain FC win on 2026-05-30?</span> <span style="color:var(--text-secondary)">(2026-05-29 23:17)</span></div></div>
     </div>
@@ -732,14 +732,14 @@
             datasets: [
               {
                 label: 'Predicho (modelo)',
-                data: [1.8, 8.8, 24.7, 38.0, 59.2, null, 96.6],
+                data: [1.7, 9.0, 24.7, 38.0, 59.2, null, 96.6],
                 backgroundColor: 'rgba(168, 85, 247, 0.45)',
                 borderColor: '#a855f7',
                 borderWidth: 1.5,
               },
               {
                 label: 'Real (resueltas YES/NO)',
-                data: [7.1, 0.0, 12.5, 40.0, 20.0, 0, 84.6],
+                data: [12.5, 0.0, 12.5, 40.0, 20.0, 0, 85.7],
                 backgroundColor: 'rgba(255, 20, 147, 0.55)',
                 borderColor: '#ff1493',
                 borderWidth: 1.5,
@@ -754,7 +754,7 @@
               tooltip: {
                 callbacks: {
                   afterLabel: function(ctx) {
-                    var n = [14, 5, 8, 5, 5, 0, 13][ctx.dataIndex];
+                    var n = [16, 6, 8, 5, 5, 0, 14][ctx.dataIndex];
                     return n != null ? 'muestra: ' + n : '';
                   }
                 }
